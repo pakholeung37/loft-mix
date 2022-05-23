@@ -1,20 +1,12 @@
 import type { Component } from 'solid-js'
+import { Content } from './components/Content'
+import { Header } from './components/Header'
 
 const App: Component = () => {
   return (
-    <div class="m-0">
-      <header>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          href="https://github.com/solidjs/solid"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Solid
-        </a>
-      </header>
+    <div class="root-container flex flex-col h-screen">
+      <Header />
+      <Content />
     </div>
   )
 }
