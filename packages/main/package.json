@@ -10,6 +10,9 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@vanilla-extract/css": "*",
+    "@vanilla-extract/css-utils": "*",
+    "@vanilla-extract/sprinkles": "*",
     "solid-js": "*"
   }
 }
