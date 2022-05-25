@@ -1,17 +1,38 @@
 import type { Component } from 'solid-js'
-import { header, logoContainer } from './header.css'
+import { RiLogoXingFill } from 'solid-icons/ri'
+import c from 'clsx'
+import {
+  header,
+  logo_container,
+  logo,
+  panels,
+  panel,
+  left_panel,
+  mid_panel,
+  right_panel,
+  panel_item,
+} from './header.css'
+import { Avatar } from '../Avatar'
 
 export const Header: Component = () => {
   return (
-    <header class={`${header}`}>
-      <div class={`${logoContainer}`}>
-        <div class="px-4">LoftMix</div>
+    <header class={header}>
+      <div class={logo_container}>
+        <a class={logo}>
+          <RiLogoXingFill size={32} color="currentColor" />
+          <h1>LOFTMIX</h1>
+        </a>
       </div>
-      <div class="panels divide-x divide-slate-200 flex flex-1">
-        <div class="left-panel h-full w-32"></div>
-        <div class="mid-panel h-full flex-grow"></div>
-        <div class="right-panel h-full flex justify-center items-center">
-          <div class="px-4">action</div>
+      <div class={panels}>
+        <div class={c(panel, left_panel)}></div>
+        <div class={c(panel, mid_panel)}></div>
+        <div class={c(panel, right_panel)}>
+          <div class={panel_item}>
+            <Avatar
+              name="Pakho Leung"
+              src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1003.jpg"
+            />
+          </div>
         </div>
       </div>
     </header>

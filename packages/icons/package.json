@@ -1,0 +1,13 @@
+{
+  "name": "@loft-mix/icons",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "build": "vite build"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "svgo": "^2.8.0"
+  },
+  "dependencies": {}
+}

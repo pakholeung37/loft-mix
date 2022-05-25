@@ -1,12 +1,14 @@
 import type { Component } from 'solid-js'
-import { rootContainer } from './app.css'
+import c from 'clsx'
+import { root_container } from './app.css'
 import { Content } from './components/Content'
 import { Header } from './components/Header'
-import { lightTheme } from './theme.css'
+import { light_theme } from './theme/index.css'
+import 'tailwindcss/lib/css/preflight.css'
 
 const App: Component = () => {
   return (
-    <div class={`${rootContainer} ${lightTheme}`}>
+    <div class={c(root_container, light_theme)}>
       <Header />
       <Content />
     </div>
