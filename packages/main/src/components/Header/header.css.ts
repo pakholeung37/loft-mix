@@ -13,8 +13,6 @@ export const logo_container = style({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  background: vars.color.primary,
-  color: vars.color.logo_text,
 })
 
 export const logo = style({
@@ -27,6 +25,11 @@ export const logo = style({
   fontWeight: 'bold',
   cursor: 'pointer',
   userSelect: 'none',
+  color: vars.color.primary,
+})
+
+export const logo_text = style({
+  paddingLeft: vars.space[2],
 })
 
 export const panels = style({
@@ -37,28 +40,34 @@ export const panels = style({
 export const panel = style({
   height: '100%',
   selectors: {
-    [`${panels} > & ~ &`]: {
-      borderLeft: '1px solid',
-      borderColor: vars.color.border,
-    },
+    [`${panels} > & ~ &`]: {},
   },
 })
 
-export const left_panel = style({
-  width: vars.space[32],
-})
+export const left_panel = style({})
 
 export const mid_panel = style({
   flex: 1,
 })
 
-export const right_panel = style({})
-
-export const panel_item = style({
+export const right_panel = style({
+  display: 'flex',
   paddingLeft: vars.space[4],
   paddingRight: vars.space[4],
+})
+
+export const panel_item = style({
   height: '100%',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  selectors: {
+    [`${right_panel} > & ~ &`]: {
+      marginLeft: vars.space[2],
+    },
+  },
+})
+
+export const abc = style({
+  display: 'abcde',
 })

@@ -5,8 +5,9 @@
   "scripts": {
     "start": "vite  --port 8000",
     "dev": "pnpm start",
-    "build": "vite build",
-    "serve": "vite preview"
+    "build": "vite build && pnpm purgecss",
+    "serve": "vite preview",
+    "purgecss": "purgecss --css ./dist/**/*.css --content ./dist/**/*.html ./dist/**/*.js --output ./dist/assets"
   },
   "license": "MIT",
   "dependencies": {

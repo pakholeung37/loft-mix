@@ -1,7 +1,8 @@
-import type { Component, JSX } from 'solid-js'
+import { Component, createSignal, JSX } from 'solid-js'
 import c from 'clsx'
-import { avatar, sm, md, lg } from './avatar.css'
+import { avatar, sm, md, lg, no_avatar } from './avatar.css'
 import { vars } from '../../theme/index.css'
+import { VscAccount } from 'solid-icons/vsc'
 
 export type AvatarProps = {
   name?: string
@@ -16,17 +17,20 @@ export const Avatar: Component<AvatarProps> = ({
   size = 'md',
   style,
 }) => {
+  const [$srcLoaded, setSrcLoaded] = createSignal(false)
+
+  const onLoad = () => {
+    setSrcLoaded(true)
+  }
+
   return (
     <div
       class={c(avatar, sizeMap[size])}
       title={name}
-      style={
-        src
-          ? { 'background-image': `url(${src})`, ...style }
-          : { 'backgound-color': vars.color.avatar_bg, ...style }
-      }
+      style={{ 'backgound-color': vars.color.avatar_bg, ...style }}
     >
-      {src || !name ? null : initials(name)}
+      {src || !name ? <img src={src} onload={onLoad}></img> : initials(name)}
+      {!$srcLoaded() && <VscAccount class={no_avatar} />}
     </div>
   )
 }
