@@ -1,4 +1,4 @@
-import { createTheme, createThemeContract } from '@vanilla-extract/css'
+import { createGlobalTheme, createThemeContract } from '@vanilla-extract/css'
 import { merge } from 'lodash-es'
 import { colors } from './colors'
 import { space } from './space'
@@ -49,7 +49,8 @@ const baseTheme = merge(
 
 export const vars = createThemeContract(baseTheme)
 
-export const light_theme = createTheme(
+export const light_theme = createGlobalTheme(
+  ':root',
   vars,
   merge(baseTheme, {
     color: {
