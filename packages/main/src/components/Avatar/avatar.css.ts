@@ -1,6 +1,24 @@
 import { style } from '@vanilla-extract/css'
 import { vars } from '../../theme/index.css'
 
+export const avatar_container = style({
+  position: 'relative',
+})
+
+export const avatar = style({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundPosition: 'center',
+  backgroundSize: 'contain',
+  borderRadius: '999px',
+  height: '100%',
+  width: '100%',
+  overflow: 'hidden',
+  position: 'relative',
+  color: vars.color.avatar_text,
+})
+
 export const sm = style({
   height: vars.space[6],
   width: vars.space[6],
@@ -25,22 +43,8 @@ export const xl = style({
   fontSize: vars.space[6],
 })
 
-export const avatar_container = style({
-  position: 'relative',
-})
-
-export const avatar = style({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  backgroundPosition: 'center',
-  backgroundSize: 'contain',
-  borderRadius: '999px',
-  height: '100%',
-  width: '100%',
-  overflow: 'hidden',
-  position: 'relative',
-  color: vars.color.avatar_text,
+export const square = style({
+  borderRadius: vars.borderRadius.sm,
 })
 
 export const no_avatar = style({

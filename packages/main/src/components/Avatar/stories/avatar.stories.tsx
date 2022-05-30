@@ -4,7 +4,7 @@ export default {
   title: 'Avatar',
 }
 
-export const Default = () => (
+export const Basic = () => (
   <>
     <div style={{ display: 'flex' }}>
       <Avatar

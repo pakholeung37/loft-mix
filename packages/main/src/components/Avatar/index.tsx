@@ -25,7 +25,7 @@ const sizeMap = { sm, md, lg, xl }
 export const Avatar: Component<AvatarProps> = ({
   name,
   src,
-  size = 'md',
+  size = 'sm',
   style,
   status,
 }) => {
