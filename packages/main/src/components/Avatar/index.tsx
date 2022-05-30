@@ -1,21 +1,33 @@
 import { Component, createSignal, JSX } from 'solid-js'
-import c from 'clsx'
-import { avatar, sm, md, lg, no_avatar } from './avatar.css'
-import { vars } from '../../theme/index.css'
+import {
+  avatar,
+  sm,
+  md,
+  lg,
+  xl,
+  no_avatar,
+  avatar_image,
+  avatar_text,
+  status_container,
+  avatar_container,
+} from './avatar.css'
 import { VscAccount } from 'solid-icons/vsc'
+import { vars } from '../../theme/index.css'
 
 export type AvatarProps = {
   name?: string
   src?: string
-  size?: 'sm' | 'md' | 'lg'
+  size?: 'sm' | 'md' | 'lg' | 'xl'
   style?: JSX.CSSProperties
+  status?: { color?: string; icon?: JSX.Element; title?: string }
 }
-const sizeMap = { sm, md, lg }
+const sizeMap = { sm, md, lg, xl }
 export const Avatar: Component<AvatarProps> = ({
   name,
   src,
   size = 'md',
   style,
+  status,
 }) => {
   const [$srcLoaded, setSrcLoaded] = createSignal(false)
 
@@ -24,13 +36,26 @@ export const Avatar: Component<AvatarProps> = ({
   }
 
   return (
-    <div
-      class={c(avatar, sizeMap[size])}
-      title={name}
-      style={{ 'backgound-color': vars.color.avatar_bg, ...style }}
-    >
-      {src || !name ? <img src={src} onload={onLoad}></img> : initials(name)}
-      {!$srcLoaded() && <VscAccount class={no_avatar} />}
+    <div class={`${avatar_container} ${sizeMap[size]}`}>
+      <div class={avatar} title={name} style={style}>
+        {(!name && !src) || (src && !$srcLoaded()) ? (
+          <VscAccount class={no_avatar} />
+        ) : null}
+        {src ? (
+          <img class={avatar_image} src={src} onload={onLoad}></img>
+        ) : name ? (
+          <div class={avatar_text}>{initials(name)}</div>
+        ) : null}
+      </div>
+      {status && (
+        <div
+          class={status_container}
+          style={{ background: status.color ?? vars.color.success }}
+          title={status.title}
+        >
+          {status.icon}
+        </div>
+      )}
     </div>
   )
 }

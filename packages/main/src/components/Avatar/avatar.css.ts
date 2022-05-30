@@ -2,18 +2,31 @@ import { style } from '@vanilla-extract/css'
 import { vars } from '../../theme/index.css'
 
 export const sm = style({
-  height: '24px',
-  width: '24px',
+  height: vars.space[6],
+  width: vars.space[6],
+  fontSize: vars.space[2],
 })
 
 export const md = style({
-  height: '32px',
-  width: '32px',
+  height: vars.space[8],
+  width: vars.space[8],
+  fontSize: vars.space[3],
 })
 
 export const lg = style({
-  height: '48px',
-  width: '48px',
+  height: vars.space[12],
+  width: vars.space[12],
+  fontSize: vars.space[4],
+})
+
+export const xl = style({
+  height: vars.space[16],
+  width: vars.space[16],
+  fontSize: vars.space[6],
+})
+
+export const avatar_container = style({
+  position: 'relative',
 })
 
 export const avatar = style({
@@ -23,15 +36,16 @@ export const avatar = style({
   backgroundPosition: 'center',
   backgroundSize: 'contain',
   borderRadius: '999px',
+  height: '100%',
+  width: '100%',
   overflow: 'hidden',
-  color: vars.color.avatar_text,
   position: 'relative',
+  color: vars.color.avatar_text,
 })
 
 export const no_avatar = style({
   color: vars.color.white,
   backgroundColor: vars.color.gray2,
-  position: 'absolute',
   selectors: {
     [`${sm} &`]: {
       fontSize: '28px',
@@ -41,6 +55,65 @@ export const no_avatar = style({
     },
     [`${lg} &`]: {
       fontSize: '52px',
+    },
+    [`${xl} &`]: {
+      fontSize: '72px',
+    },
+  },
+})
+
+export const avatar_image = style({
+  display: 'block',
+  height: '100%',
+  width: '100%',
+})
+
+export const avatar_text = style({
+  display: 'flex',
+  height: '100%',
+  width: '100%',
+  alignItems: 'center',
+  justifyContent: 'center',
+  fontWeight: 'bold',
+  background: vars.color.primary,
+  color: vars.color.white,
+})
+
+export const status_container = style({
+  position: 'absolute',
+  borderRadius: '999px',
+  bottom: 0,
+  right: 0,
+  zIndex: 100,
+  border: `${vars.space['0.5']} solid ${vars.color.white}`,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  color: vars.color.white,
+  selectors: {
+    [`${sm} &`]: {
+      border: `${vars.space.px} solid ${vars.color.white}`,
+      fontSize: vars.space[1.5],
+      height: vars.space[1.5],
+      width: vars.space[1.5],
+    },
+    [`${md} &`]: {
+      border: `${vars.space['0.5']} solid ${vars.color.white}`,
+      fontSize: vars.space[2.5],
+      height: vars.space[2.5],
+      width: vars.space[2.5],
+    },
+    [`${lg} &`]: {
+      border: `${vars.space['0.5']} solid ${vars.color.white}`,
+      fontSize: vars.space[4],
+      height: vars.space[4],
+      width: vars.space[4],
+    },
+    [`${xl} &`]: {
+      border: `${vars.space['0.5']} solid ${vars.color.white}`,
+      fontSize: vars.space[4],
+      height: vars.space[4],
+      width: vars.space[4],
     },
   },
 })
