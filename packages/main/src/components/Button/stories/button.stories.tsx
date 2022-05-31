@@ -33,6 +33,70 @@ export const Basic = () => {
         <Button variant="ghost">ghost</Button>
         <Button variant="link">link</Button>
       </div>
+      <div
+        style={{ display: 'flex', 'column-gap': '4px', 'margin-top': '4px' }}
+      >
+        <Button size="md" variant="neutral">
+          neutral
+        </Button>
+        <Button size="md" variant="primary">
+          primary
+        </Button>
+        <Button size="md" variant="outline">
+          outline
+        </Button>
+        <Button size="md" variant="ghost">
+          ghost
+        </Button>
+        <Button size="md" variant="link">
+          link
+        </Button>
+      </div>
+      <div
+        style={{ display: 'flex', 'column-gap': '4px', 'margin-top': '4px' }}
+      >
+        <Button size="lg" variant="neutral">
+          neutral
+        </Button>
+        <Button size="lg" variant="primary">
+          primary
+        </Button>
+        <Button size="lg" variant="outline">
+          outline
+        </Button>
+        <Button size="lg" variant="ghost">
+          ghost
+        </Button>
+        <Button size="lg" variant="link">
+          link
+        </Button>
+      </div>
+    </>
+  )
+}
+
+export const IconOnly = () => {
+  return (
+    <>
+      <div
+        style={{ display: 'flex', 'column-gap': '4px', 'margin-top': '4px' }}
+      >
+        <Button size="lg" variant="neutral">
+          neutral
+        </Button>
+        <Button size="lg" variant="primary">
+          primary
+        </Button>
+        <Button size="lg" variant="outline">
+          outline
+        </Button>
+        <Button size="lg" variant="ghost">
+          ghost
+        </Button>
+        <Button size="lg" variant="link">
+          link
+        </Button>
+      </div>
     </>
   )
 }
