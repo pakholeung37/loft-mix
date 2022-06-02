@@ -119,3 +119,8 @@ export const link = style({
     },
   },
 })
+
+export const icon_only = style({
+  paddingInlineStart: 0,
+  paddingInlineEnd: 0,
+})

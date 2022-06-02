@@ -1,4 +1,4 @@
-import { Component, JSX } from 'solid-js'
+import { Component, JSX, JSXElement, Show, VoidComponent } from 'solid-js'
 import {
   button,
   ghost,
@@ -10,13 +10,18 @@ import {
   sm,
   md,
   lg,
+  icon_only,
 } from './button.css'
 
 export type ButtonProps = {
-  children: JSX.Element
+  children?: JSX.Element
   variant?: 'neutral' | 'primary' | 'outline' | 'ghost' | 'link'
   size?: 'xs' | 'sm' | 'md' | 'lg'
   disabled?: boolean
+  leftIcon?: JSXElement
+  rightIcon?: JSXElement
+  rounded?: boolean
+  className?: string
 }
 
 const variantMap = {
@@ -37,10 +42,31 @@ export const Button: Component<ButtonProps> = ({
   children,
   size = 'sm',
   variant = 'neutral',
+  leftIcon,
+  rightIcon,
+  className,
 }) => {
   return (
-    <button class={`${button} ${variantMap[variant]} ${sizeMap[size]}`}>
+    <button
+      class={`${button} ${variantMap[variant]} ${sizeMap[size]} ${className}`}
+    >
+      <Show when={leftIcon}>{leftIcon}</Show>
       {children}
+      <Show when={rightIcon}>{rightIcon}</Show>
     </button>
+  )
+}
+
+export type IconButtonProps = ButtonProps & {
+  icon?: JSX.Element
+}
+
+export const IconButton: VoidComponent<IconButtonProps> = props => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { icon, leftIcon, rightIcon, className, ...restProps } = props
+  return (
+    <Button className={`${icon_only} ${className}`} {...restProps}>
+      {icon}
+    </Button>
   )
 }
