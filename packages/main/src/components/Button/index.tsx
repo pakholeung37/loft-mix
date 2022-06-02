@@ -57,13 +57,12 @@ export const Button: Component<ButtonProps> = ({
   )
 }
 
-export type IconButtonProps = ButtonProps & {
+export type IconButtonProps = Omit<ButtonProps, 'leftIcon' | 'rightIcon'> & {
   icon?: JSX.Element
 }
 
 export const IconButton: VoidComponent<IconButtonProps> = props => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { icon, leftIcon, rightIcon, className, ...restProps } = props
+  const { icon, className, ...restProps } = props
   return (
     <Button className={`${icon_only} ${className}`} {...restProps}>
       {icon}
