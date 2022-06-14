@@ -1,4 +1,4 @@
-import { Component, createSignal, JSX } from 'solid-js'
+import { Component, createSignal, JSX, mergeProps } from 'solid-js'
 import {
   avatar,
   sm,
@@ -22,13 +22,12 @@ export type AvatarProps = {
   status?: { color?: string; icon?: JSX.Element; title?: string }
 }
 const sizeMap = { sm, md, lg, xl }
-export const Avatar: Component<AvatarProps> = ({
-  name,
-  src,
-  size = 'sm',
-  style,
-  status,
-}) => {
+
+const defaultProps: Required<Pick<AvatarProps, 'size'>> = {
+  size: 'sm',
+}
+export const Avatar: Component<AvatarProps> = oriProps => {
+  const props = mergeProps(defaultProps, oriProps)
   const [$srcLoaded, setSrcLoaded] = createSignal(false)
 
   const onLoad = () => {
@@ -36,24 +35,24 @@ export const Avatar: Component<AvatarProps> = ({
   }
 
   return (
-    <div class={`${avatar_container} ${sizeMap[size]}`}>
-      <div class={avatar} title={name} style={style}>
-        {(!name && !src) || (src && !$srcLoaded()) ? (
+    <div class={`${avatar_container} ${sizeMap[props.size]}`}>
+      <div class={avatar} title={props.name} style={props.style}>
+        {(!props.name && !props.src) || (props.src && !$srcLoaded()) ? (
           <VscAccount class={no_avatar} />
         ) : null}
-        {src ? (
-          <img class={avatar_image} src={src} onload={onLoad}></img>
-        ) : name ? (
-          <div class={avatar_text}>{initials(name)}</div>
+        {props.src ? (
+          <img class={avatar_image} src={props.src} onload={onLoad}></img>
+        ) : props.name ? (
+          <div class={avatar_text}>{initials(props.name)}</div>
         ) : null}
       </div>
-      {status && (
+      {props.status && (
         <div
           class={status_container}
-          style={{ background: status.color ?? vars.color.success }}
-          title={status.title}
+          style={{ background: props.status?.color ?? vars.color.success }}
+          title={props.status?.title}
         >
-          {status.icon}
+          {props.status?.icon}
         </div>
       )}
     </div>

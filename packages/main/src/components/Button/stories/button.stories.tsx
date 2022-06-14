@@ -1,4 +1,5 @@
 import { AiFillLike } from 'solid-icons/ai'
+import { createSignal } from 'solid-js'
 import { Button, IconButton } from '..'
 
 export default {
@@ -275,6 +276,14 @@ export const IconOnly = () => {
 }
 
 export const status = () => {
+  const [$loading, setLoading] = createSignal(true)
+
+  const handleClick = () => {
+    setLoading(prev => {
+      console.log('prev', prev)
+      return !prev
+    })
+  }
   return (
     <>
       <div style={{ display: 'flex', 'column-gap': '4px' }}>
@@ -313,16 +322,36 @@ export const status = () => {
       <div
         style={{ display: 'flex', 'column-gap': '4px', 'margin-top': '4px' }}
       >
-        <Button size="xs" variant="primary" rightIcon={<AiFillLike />}>
+        <Button
+          size="xs"
+          variant="neutral"
+          loading={$loading()}
+          onClick={handleClick}
+        >
           neutral
         </Button>
-        <Button size="sm" variant="primary" rightIcon={<AiFillLike />}>
+        <Button
+          size="sm"
+          variant="primary"
+          loading={$loading()}
+          onClick={handleClick}
+        >
           primary
         </Button>
-        <Button size="md" variant="primary" rightIcon={<AiFillLike />}>
+        <Button
+          size="md"
+          variant="outline"
+          loading={$loading()}
+          onClick={handleClick}
+        >
           outline
         </Button>
-        <Button size="lg" variant="primary" rightIcon={<AiFillLike />}>
+        <Button
+          size="lg"
+          variant="ghost"
+          loading={$loading()}
+          onClick={handleClick}
+        >
           ghost
         </Button>
       </div>

@@ -1,4 +1,5 @@
 import { style } from '@vanilla-extract/css'
+import { rotate } from '../../style/utilities.css'
 import { vars } from '../../theme/index.css'
 
 export const xs = style({
@@ -45,11 +46,15 @@ export const button = style({
   cursor: 'pointer',
   borderWidth: vars.space.px,
   borderColor: 'transparent',
-  transitionProperty: vars.transition.property.common,
-  transitionDuration: vars.transition.duration.normal,
   selectors: {
     '&:active': {
       boxShadow: 'none',
+    },
+    '&:disabled, &:active:disabled, &:hover:disabled': {
+      cursor: 'not-allowed',
+      background: vars.color.bg_default1,
+      borderColor: vars.color.transparent,
+      color: vars.color.fg_default1,
     },
   },
 })
@@ -119,6 +124,10 @@ export const link = style({
     '&:active': {
       color: vars.color.primary7,
     },
+    '&:disabled, &:active:disabled, &:hover:disabled': {
+      background: 'transparent',
+      textDecoration: 'none',
+    },
   },
 })
 
@@ -140,6 +149,10 @@ export const right_icon = style({
     [`${md} &`]: { marginLeft: vars.space[1.5] },
     [`${lg} &`]: { marginLeft: vars.space[2] },
   },
+})
+
+export const loading_icon = style({
+  animation: `0.45s linear 0s infinite normal none running ${rotate}`,
 })
 
 export const icon_only = style({

@@ -1,4 +1,15 @@
-import { Component, JSX, JSXElement, Show, VoidComponent } from 'solid-js'
+import {
+  Component,
+  JSX,
+  JSXElement,
+  Match,
+  mergeProps,
+  Show,
+  splitProps,
+  Switch,
+  VoidComponent,
+} from 'solid-js'
+import { BiLoaderAlt } from 'solid-icons/bi'
 import { rounded } from '../../style/utilities.css'
 import {
   button,
@@ -14,17 +25,19 @@ import {
   icon_only,
   left_icon,
   right_icon,
+  loading_icon,
 } from './button.css'
 
-export type ButtonProps = {
+export type ButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
   children?: JSX.Element
   variant?: 'neutral' | 'primary' | 'outline' | 'ghost' | 'link'
   size?: 'xs' | 'sm' | 'md' | 'lg'
-  disabled?: boolean
+  className?: string
+  style?: string | JSX.CSSProperties
   leftIcon?: JSXElement
   rightIcon?: JSXElement
   rounded?: boolean
-  className?: string
+  loading?: boolean
 }
 
 const variantMap = {
@@ -41,29 +54,46 @@ const sizeMap = {
   md,
   lg,
 }
-export const Button: Component<ButtonProps> = ({
-  children,
-  size = 'sm',
-  variant = 'neutral',
-  leftIcon,
-  rightIcon,
-  className,
-  rounded: isRounded,
-  ...restProps
-}) => {
+
+const defaultProps: Required<Pick<ButtonProps, 'size' | 'variant'>> = {
+  size: 'sm',
+  variant: 'neutral',
+}
+
+export const Button: Component<ButtonProps> = oriProps => {
+  const [props, restProps] = splitProps(mergeProps(defaultProps, oriProps), [
+    'className',
+    'size',
+    'rounded',
+    'variant',
+    'disabled',
+    'loading',
+    'leftIcon',
+    'rightIcon',
+    'children',
+  ])
+
   return (
     <button
-      class={`${button} ${variantMap[variant]} ${sizeMap[size]} ${
-        className ?? ''
-      } ${isRounded ? rounded : ''}`}
+      class={`${button} ${variantMap[props.variant]} ${sizeMap[props.size]} ${
+        props.className ?? ''
+      } ${props.rounded ? rounded : ''}`}
+      disabled={props.disabled}
       {...restProps}
     >
-      <Show when={leftIcon}>
-        <span class={`${left_icon}`}>{leftIcon}</span>
-      </Show>
-      {children}
-      <Show when={rightIcon}>
-        <span class={`${right_icon}`}>{rightIcon}</span>
+      <Switch>
+        <Match when={props.loading}>
+          <span class={`${left_icon} ${loading_icon}`}>
+            <BiLoaderAlt />
+          </span>
+        </Match>
+        <Match when={props.leftIcon}>
+          <span class={`${left_icon}`}>{props.leftIcon}</span>
+        </Match>
+      </Switch>
+      {props.children}
+      <Show when={props.rightIcon}>
+        <span class={`${right_icon}`}>{props.rightIcon}</span>
       </Show>
     </button>
   )
@@ -73,11 +103,11 @@ export type IconButtonProps = Omit<ButtonProps, 'leftIcon' | 'rightIcon'> & {
   icon?: JSX.Element
 }
 
-export const IconButton: VoidComponent<IconButtonProps> = props => {
-  const { icon, className, ...restProps } = props
+export const IconButton: VoidComponent<IconButtonProps> = oriProps => {
+  const [props, restProps] = splitProps(oriProps, ['className', 'icon'])
   return (
-    <Button className={`${icon_only} ${className}`} {...restProps}>
-      {icon}
+    <Button className={`${icon_only} ${props.className}`} {...restProps}>
+      {props.icon}
     </Button>
   )
 }
