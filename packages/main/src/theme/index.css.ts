@@ -18,6 +18,29 @@ const header = {
   },
 }
 
+const transition = {
+  transition: {
+    property: {
+      common: null,
+      colors: null,
+      dimentions: null,
+      position: null,
+    },
+    duration: {
+      ultra_fast: null,
+      fast: null,
+      faster: null,
+      normal: null,
+      slow: null,
+      slower: null,
+      ultra_slow: null,
+    },
+    easing_ease_in: null,
+    easing_ease_in_out: null,
+    easing_ease_out: null,
+  },
+}
+
 const base = {
   color: colors,
   space,
@@ -81,6 +104,7 @@ const baseTheme = merge(
   base,
   avatar,
   header,
+  transition,
 )
 /**
  * Name	Size	Pixels	Preview
@@ -211,6 +235,27 @@ export const light_theme = createGlobalTheme(
       md: vars.space[1.5],
       lg: vars.space[2],
       rounded: '9999px',
+    },
+    transition: {
+      property: {
+        common:
+          'background-color,border-color,color,fill,stroke,opacity,box-shadow,transform',
+        colors: 'background-color,border-color,color,fill,stroke',
+        dimentions: 'width,height',
+        position: 'left,right,top,bottom',
+      },
+      duration: {
+        ultra_fast: '50ms',
+        fast: '100ms',
+        faster: '150ms',
+        normal: '200ms',
+        slow: '300ms',
+        slower: '400ms',
+        ultra_slow: '500ms',
+      },
+      easing_ease_in: 'cubic-bezier(0.4, 0, 1, 1)',
+      easing_ease_in_out: 'cubic-bezier(0, 0, 0.2, 1)',
+      easing_ease_out: 'cubic-bezier(0.4, 0, 0.2, 1)',
     },
   }),
 )

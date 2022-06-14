@@ -76,6 +76,62 @@ export const Basic = () => {
   )
 }
 
+export const withIcon = () => {
+  return (
+    <>
+      <div style={{ display: 'flex', 'column-gap': '4px' }}>
+        <Button size="md" variant="neutral" leftIcon={<AiFillLike />}>
+          neutral
+        </Button>
+        <Button size="md" variant="primary" leftIcon={<AiFillLike />}>
+          primary
+        </Button>
+        <Button size="md" variant="outline" leftIcon={<AiFillLike />}>
+          outline
+        </Button>
+        <Button size="md" variant="ghost" leftIcon={<AiFillLike />}>
+          ghost
+        </Button>
+        <Button size="md" variant="link" leftIcon={<AiFillLike />}>
+          link
+        </Button>
+      </div>
+      <div
+        style={{ display: 'flex', 'column-gap': '4px', 'margin-top': '4px' }}
+      >
+        <Button size="xs" variant="primary" leftIcon={<AiFillLike />}>
+          neutral
+        </Button>
+        <Button size="sm" variant="primary" leftIcon={<AiFillLike />}>
+          primary
+        </Button>
+        <Button size="md" variant="primary" leftIcon={<AiFillLike />}>
+          outline
+        </Button>
+        <Button size="lg" variant="primary" leftIcon={<AiFillLike />}>
+          ghost
+        </Button>
+      </div>
+      <div
+        style={{ display: 'flex', 'column-gap': '4px', 'margin-top': '4px' }}
+      >
+        <Button size="xs" variant="primary" rightIcon={<AiFillLike />}>
+          neutral
+        </Button>
+        <Button size="sm" variant="primary" rightIcon={<AiFillLike />}>
+          primary
+        </Button>
+        <Button size="md" variant="primary" rightIcon={<AiFillLike />}>
+          outline
+        </Button>
+        <Button size="lg" variant="primary" rightIcon={<AiFillLike />}>
+          ghost
+        </Button>
+      </div>
+    </>
+  )
+}
+
 export const IconOnly = () => {
   return (
     <>
@@ -179,6 +235,96 @@ export const IconOnly = () => {
           icon={<AiFillLike />}
         ></IconButton>
         <IconButton size="lg" variant="link" icon={<AiFillLike />}></IconButton>
+      </div>
+      <div
+        style={{ display: 'flex', 'column-gap': '4px', 'margin-top': '4px' }}
+      >
+        <IconButton
+          size="sm"
+          variant="neutral"
+          icon={<AiFillLike />}
+          rounded
+        ></IconButton>
+        <IconButton
+          size="sm"
+          variant="primary"
+          icon={<AiFillLike />}
+          rounded
+        ></IconButton>
+        <IconButton
+          size="sm"
+          variant="outline"
+          icon={<AiFillLike />}
+          rounded
+        ></IconButton>
+        <IconButton
+          size="sm"
+          variant="ghost"
+          icon={<AiFillLike />}
+          rounded
+        ></IconButton>
+        <IconButton
+          size="sm"
+          variant="link"
+          icon={<AiFillLike />}
+          rounded
+        ></IconButton>
+      </div>
+    </>
+  )
+}
+
+export const status = () => {
+  return (
+    <>
+      <div style={{ display: 'flex', 'column-gap': '4px' }}>
+        <Button size="md" variant="neutral" leftIcon={<AiFillLike />} disabled>
+          disabled
+        </Button>
+        <Button size="md" variant="primary" leftIcon={<AiFillLike />} disabled>
+          disabled
+        </Button>
+        <Button size="md" variant="outline" leftIcon={<AiFillLike />} disabled>
+          disabled
+        </Button>
+        <Button size="md" variant="ghost" leftIcon={<AiFillLike />} disabled>
+          disabled
+        </Button>
+        <Button size="md" variant="link" leftIcon={<AiFillLike />} disabled>
+          disabled
+        </Button>
+      </div>
+      <div
+        style={{ display: 'flex', 'column-gap': '4px', 'margin-top': '4px' }}
+      >
+        <Button size="xs" variant="neutral" leftIcon={<AiFillLike />} rounded>
+          rounded
+        </Button>
+        <Button size="sm" variant="primary" leftIcon={<AiFillLike />} rounded>
+          rounded
+        </Button>
+        <Button size="md" variant="outline" leftIcon={<AiFillLike />} rounded>
+          rounded
+        </Button>
+        <Button size="lg" variant="ghost" leftIcon={<AiFillLike />} rounded>
+          rounded
+        </Button>
+      </div>
+      <div
+        style={{ display: 'flex', 'column-gap': '4px', 'margin-top': '4px' }}
+      >
+        <Button size="xs" variant="primary" rightIcon={<AiFillLike />}>
+          neutral
+        </Button>
+        <Button size="sm" variant="primary" rightIcon={<AiFillLike />}>
+          primary
+        </Button>
+        <Button size="md" variant="primary" rightIcon={<AiFillLike />}>
+          outline
+        </Button>
+        <Button size="lg" variant="primary" rightIcon={<AiFillLike />}>
+          ghost
+        </Button>
       </div>
     </>
   )

@@ -45,6 +45,8 @@ export const button = style({
   cursor: 'pointer',
   borderWidth: vars.space.px,
   borderColor: 'transparent',
+  transitionProperty: vars.transition.property.common,
+  transitionDuration: vars.transition.duration.normal,
   selectors: {
     '&:active': {
       boxShadow: 'none',
@@ -117,6 +119,26 @@ export const link = style({
     '&:active': {
       color: vars.color.primary7,
     },
+  },
+})
+
+export const left_icon = style({
+  display: 'inline-flex',
+  selectors: {
+    [`${xs} &`]: { marginRight: vars.space[0.5] },
+    [`${sm} &`]: { marginRight: vars.space[1] },
+    [`${md} &`]: { marginRight: vars.space[1.5] },
+    [`${lg} &`]: { marginRight: vars.space[2] },
+  },
+})
+
+export const right_icon = style({
+  display: 'inline-flex',
+  selectors: {
+    [`${xs} &`]: { marginLeft: vars.space[0.5] },
+    [`${sm} &`]: { marginLeft: vars.space[1] },
+    [`${md} &`]: { marginLeft: vars.space[1.5] },
+    [`${lg} &`]: { marginLeft: vars.space[2] },
   },
 })
 
