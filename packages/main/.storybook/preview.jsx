@@ -1,5 +1,5 @@
 import { createRoot } from 'solid-js'
-import '../src/theme/index.css'
+import '../src/style/index.css'
 
 export const decorators = [
   Story =>

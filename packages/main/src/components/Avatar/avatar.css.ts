@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css'
-import { vars } from '../../theme/index.css'
+import { vars } from '../../style/index.css'
 
 export const avatar_container = style({
   position: 'relative',

@@ -1,6 +1,6 @@
 import { style } from '@vanilla-extract/css'
 import { rotate } from '../../style/utilities.css'
-import { vars } from '../../theme/index.css'
+import { vars } from '../../style/index.css'
 
 export const xs = style({
   height: vars.space[6],
@@ -99,7 +99,7 @@ export const outline = style({
 })
 export const ghost = style({
   color: vars.color.primary,
-  background: vars.color.bg_default,
+  background: vars.color.transparent,
   boxShadow: 'none',
   selectors: {
     '&:hover': {
@@ -111,15 +111,14 @@ export const ghost = style({
   },
 })
 export const link = style({
-  height: 'inherit',
   paddingInlineStart: 0,
   paddingInlineEnd: 0,
-  color: vars.color.primary,
-  background: 'transparent',
+  color: vars.color.fg_default,
+  background: vars.color.transparent,
   boxShadow: 'none',
   selectors: {
     '&:hover': {
-      textDecoration: 'underline',
+      color: vars.color.primary,
     },
     '&:active': {
       color: vars.color.primary7,

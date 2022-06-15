@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css'
-import { vars } from '../../theme/index.css'
+import { vars } from '../../style/index.css'
 
 export const header = style({
   display: 'flex',
@@ -7,29 +7,6 @@ export const header = style({
   height: vars.space[12],
   borderBottom: '1px solid',
   borderColor: vars.color.border,
-})
-
-export const logo_container = style({
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-})
-
-export const logo = style({
-  paddingLeft: vars.space[4],
-  paddingRight: vars.space[4],
-  display: 'flex',
-  alignItems: 'center',
-  fontSize: vars.space[5],
-  fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif',
-  fontWeight: 'bold',
-  cursor: 'pointer',
-  userSelect: 'none',
-  color: vars.color.primary,
-})
-
-export const logo_text = style({
-  paddingLeft: vars.space[2],
 })
 
 export const panels = style({

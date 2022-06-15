@@ -106,7 +106,7 @@ export type IconButtonProps = Omit<ButtonProps, 'leftIcon' | 'rightIcon'> & {
 export const IconButton: VoidComponent<IconButtonProps> = oriProps => {
   const [props, restProps] = splitProps(oriProps, ['className', 'icon'])
   return (
-    <Button className={`${icon_only} ${props.className}`} {...restProps}>
+    <Button className={`${icon_only} ${props.className ?? ''}`} {...restProps}>
       {props.icon}
     </Button>
   )

@@ -12,7 +12,7 @@ import {
   avatar_container,
 } from './avatar.css'
 import { VscAccount } from 'solid-icons/vsc'
-import { vars } from '../../theme/index.css'
+import { vars } from '../../style/index.css'
 
 export type AvatarProps = {
   name?: string
