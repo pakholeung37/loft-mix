@@ -32,7 +32,7 @@ export type ButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
   children?: JSX.Element
   variant?: 'neutral' | 'primary' | 'outline' | 'ghost' | 'text'
   size?: 'xs' | 'sm' | 'md' | 'lg'
-  className?: string
+  class?: string
   style?: string | JSX.CSSProperties
   leftIcon?: JSXElement
   rightIcon?: JSXElement
@@ -62,7 +62,7 @@ const defaultProps: Required<Pick<ButtonProps, 'size' | 'variant'>> = {
 
 export const Button: Component<ButtonProps> = oriProps => {
   const [props, restProps] = splitProps(mergeProps(defaultProps, oriProps), [
-    'className',
+    'class',
     'size',
     'rounded',
     'variant',
@@ -76,7 +76,7 @@ export const Button: Component<ButtonProps> = oriProps => {
   return (
     <button
       class={`${button} ${variantMap[props.variant]} ${sizeMap[props.size]} ${
-        props.className ?? ''
+        props.class ?? ''
       } ${props.rounded ? rounded : ''}`}
       disabled={props.disabled}
       {...restProps}
@@ -104,9 +104,9 @@ export type IconButtonProps = Omit<ButtonProps, 'leftIcon' | 'rightIcon'> & {
 }
 
 export const IconButton: VoidComponent<IconButtonProps> = oriProps => {
-  const [props, restProps] = splitProps(oriProps, ['className', 'icon'])
+  const [props, restProps] = splitProps(oriProps, ['class', 'icon'])
   return (
-    <Button className={`${icon_only} ${props.className ?? ''}`} {...restProps}>
+    <Button class={`${icon_only} ${props.class ?? ''}`} {...restProps}>
       {props.icon}
     </Button>
   )

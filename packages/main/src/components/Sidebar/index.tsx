@@ -35,7 +35,7 @@ export const Sidebar: Component<SidebarProps> = () => {
       <nav class={`${nav}`}></nav>
       <div class={fold_button_container}>
         <IconButton
-          className={fold_button}
+          class={fold_button}
           variant="text"
           size="xs"
           rounded
