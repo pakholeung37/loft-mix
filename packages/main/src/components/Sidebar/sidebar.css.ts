@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css'
 import { vars } from '../../style/index.css'
 
 export const sidebar = style({
-  width: vars.space[48],
+  width: vars.space[12],
   background: vars.color.bg_default,
   height: '100%',
   position: 'relative',
@@ -16,16 +16,10 @@ export const sidebar = style({
   transitionTimingFunction: vars.transition.easing_ease_in,
 })
 
-export const fold = style({
-  width: vars.space[12],
-})
-
 export const logo_container = style({
   display: 'flex',
   alignItems: 'center',
   height: vars.space[12],
-  width: '100%',
-  paddingLeft: vars.space[2],
 })
 
 export const logo = style({
@@ -45,19 +39,4 @@ export const logo_text = style({
 
 export const nav = style({
   flex: '1',
-})
-
-export const fold_button_container = style({
-  position: 'absolute',
-  height: vars.space[12],
-  top: 0,
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  right: '-1rem',
-})
-
-export const fold_button = style({
-  background: vars.color.bg_default,
-  border: `1px solid ${vars.color.border}`,
 })

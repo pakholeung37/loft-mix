@@ -1,4 +1,4 @@
-import { Component, createSignal, JSX, mergeProps } from 'solid-js'
+import { Component, JSX, Match, mergeProps, Switch } from 'solid-js'
 import {
   avatar,
   sm,
@@ -28,23 +28,18 @@ const defaultProps: Required<Pick<AvatarProps, 'size'>> = {
 }
 export const Avatar: Component<AvatarProps> = oriProps => {
   const props = mergeProps(defaultProps, oriProps)
-  const [$srcLoaded, setSrcLoaded] = createSignal(false)
-
-  const onLoad = () => {
-    setSrcLoaded(true)
-  }
 
   return (
     <div class={`${avatar_container} ${sizeMap[props.size]}`}>
       <div class={avatar} title={props.name} style={props.style}>
-        {(!props.name && !props.src) || (props.src && !$srcLoaded()) ? (
-          <VscAccount class={no_avatar} />
-        ) : null}
-        {props.src ? (
-          <img class={avatar_image} src={props.src} onload={onLoad}></img>
-        ) : props.name ? (
-          <div class={avatar_text}>{initials(props.name)}</div>
-        ) : null}
+        <Switch fallback={<VscAccount class={no_avatar} />}>
+          <Match when={props.src}>
+            <img class={avatar_image} src={props.src}></img>
+          </Match>
+          <Match when={props.name}>
+            <div class={avatar_text}>{initials(props.name!)}</div>
+          </Match>
+        </Switch>
       </div>
       {props.status && (
         <div
