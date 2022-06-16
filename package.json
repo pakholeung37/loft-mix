@@ -9,7 +9,8 @@
     "build": "turbo run build ",
     "test": "turbo run test",
     "prepublishOnly": "turbo run prepublishOnly",
-    "deploy": "turbo run deploy"
+    "deploy": "turbo run deploy",
+    "prepare": "husky install"
   },
   "license": "MIT",
   "devDependencies": {
