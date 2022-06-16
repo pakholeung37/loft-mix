@@ -22,7 +22,7 @@ export const Header: Component = () => {
         <div class={c(panel, right_panel)}>
           <div class={panel_item}>
             <IconButton
-              variant="link"
+              variant="text"
               icon={<AiOutlineBell size={20} />}
             ></IconButton>
           </div>

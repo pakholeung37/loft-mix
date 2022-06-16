@@ -17,7 +17,7 @@ import {
   outline,
   primary,
   neutral,
-  link,
+  text,
   xs,
   sm,
   md,
@@ -30,7 +30,7 @@ import {
 
 export type ButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
   children?: JSX.Element
-  variant?: 'neutral' | 'primary' | 'outline' | 'ghost' | 'link'
+  variant?: 'neutral' | 'primary' | 'outline' | 'ghost' | 'text'
   size?: 'xs' | 'sm' | 'md' | 'lg'
   className?: string
   style?: string | JSX.CSSProperties
@@ -45,7 +45,7 @@ const variantMap = {
   primary,
   outline,
   ghost,
-  link,
+  text,
 }
 
 const sizeMap = {

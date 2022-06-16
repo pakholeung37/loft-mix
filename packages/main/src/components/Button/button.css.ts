@@ -110,7 +110,7 @@ export const ghost = style({
     },
   },
 })
-export const link = style({
+export const text = style({
   paddingInlineStart: 0,
   paddingInlineEnd: 0,
   color: vars.color.fg_default,

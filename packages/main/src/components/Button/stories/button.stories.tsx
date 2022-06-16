@@ -22,8 +22,8 @@ export const Basic = () => {
         <Button size="xs" variant="ghost">
           ghost
         </Button>
-        <Button size="xs" variant="link">
-          link
+        <Button size="xs" variant="text">
+          text
         </Button>
       </div>
       <div
@@ -33,7 +33,7 @@ export const Basic = () => {
         <Button variant="primary">primary</Button>
         <Button variant="outline">outline</Button>
         <Button variant="ghost">ghost</Button>
-        <Button variant="link">link</Button>
+        <Button variant="text">text</Button>
       </div>
       <div
         style={{ display: 'flex', 'column-gap': '4px', 'margin-top': '4px' }}
@@ -50,8 +50,8 @@ export const Basic = () => {
         <Button size="md" variant="ghost">
           ghost
         </Button>
-        <Button size="md" variant="link">
-          link
+        <Button size="md" variant="text">
+          text
         </Button>
       </div>
       <div
@@ -69,8 +69,8 @@ export const Basic = () => {
         <Button size="lg" variant="ghost">
           ghost
         </Button>
-        <Button size="lg" variant="link">
-          link
+        <Button size="lg" variant="text">
+          text
         </Button>
       </div>
     </>
@@ -93,8 +93,8 @@ export const withIcon = () => {
         <Button size="md" variant="ghost" leftIcon={<AiFillLike />}>
           ghost
         </Button>
-        <Button size="md" variant="link" leftIcon={<AiFillLike />}>
-          link
+        <Button size="md" variant="text" leftIcon={<AiFillLike />}>
+          text
         </Button>
       </div>
       <div
@@ -159,7 +159,7 @@ export const IconOnly = () => {
           variant="ghost"
           icon={<AiFillLike />}
         ></IconButton>
-        <IconButton size="xs" variant="link" icon={<AiFillLike />}></IconButton>
+        <IconButton size="xs" variant="text" icon={<AiFillLike />}></IconButton>
       </div>
       <div
         style={{ display: 'flex', 'column-gap': '4px', 'margin-top': '4px' }}
@@ -184,7 +184,7 @@ export const IconOnly = () => {
           variant="ghost"
           icon={<AiFillLike />}
         ></IconButton>
-        <IconButton size="sm" variant="link" icon={<AiFillLike />}></IconButton>
+        <IconButton size="sm" variant="text" icon={<AiFillLike />}></IconButton>
       </div>
       <div
         style={{ display: 'flex', 'column-gap': '4px', 'margin-top': '4px' }}
@@ -209,7 +209,7 @@ export const IconOnly = () => {
           variant="ghost"
           icon={<AiFillLike />}
         ></IconButton>
-        <IconButton size="md" variant="link" icon={<AiFillLike />}></IconButton>
+        <IconButton size="md" variant="text" icon={<AiFillLike />}></IconButton>
       </div>
 
       <div
@@ -235,7 +235,7 @@ export const IconOnly = () => {
           variant="ghost"
           icon={<AiFillLike />}
         ></IconButton>
-        <IconButton size="lg" variant="link" icon={<AiFillLike />}></IconButton>
+        <IconButton size="lg" variant="text" icon={<AiFillLike />}></IconButton>
       </div>
       <div
         style={{ display: 'flex', 'column-gap': '4px', 'margin-top': '4px' }}
@@ -266,7 +266,7 @@ export const IconOnly = () => {
         ></IconButton>
         <IconButton
           size="sm"
-          variant="link"
+          variant="text"
           icon={<AiFillLike />}
           rounded
         ></IconButton>
@@ -299,7 +299,7 @@ export const status = () => {
         <Button size="md" variant="ghost" leftIcon={<AiFillLike />} disabled>
           disabled
         </Button>
-        <Button size="md" variant="link" leftIcon={<AiFillLike />} disabled>
+        <Button size="md" variant="text" leftIcon={<AiFillLike />} disabled>
           disabled
         </Button>
       </div>
