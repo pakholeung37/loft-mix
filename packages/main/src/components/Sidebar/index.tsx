@@ -1,7 +1,16 @@
 import { Component } from 'solid-js'
-import { AiFillMacCommand } from 'solid-icons/ai'
+import { AiFillMacCommand, AiOutlineBell } from 'solid-icons/ai'
 
-import { logo, logo_container, sidebar, nav } from './sidebar.css'
+import {
+  bottom_group,
+  logo,
+  logo_container,
+  sidebar,
+  text_button,
+} from './sidebar.css'
+import { Nav } from './Nav'
+import { Avatar } from '../Avatar'
+import { IconButton } from '../Button'
 
 export type SidebarProps = {}
 
@@ -13,7 +22,19 @@ export const Sidebar: Component<SidebarProps> = () => {
           <AiFillMacCommand size={32} color="currentColor" />
         </a>
       </div>
-      <nav class={`${nav}`}></nav>
+      <Nav></Nav>
+      <div class={bottom_group}>
+        <IconButton
+          class={text_button}
+          variant="text"
+          icon={<AiOutlineBell size={20} />}
+        ></IconButton>
+        <Avatar
+          name="Pakho Leung"
+          src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1003.jpg"
+          size="md"
+        />
+      </div>
     </div>
   )
 }

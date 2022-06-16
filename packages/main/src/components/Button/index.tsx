@@ -76,8 +76,8 @@ export const Button: Component<ButtonProps> = oriProps => {
   return (
     <button
       class={`${button} ${variantMap[props.variant]} ${sizeMap[props.size]} ${
-        props.class ?? ''
-      } ${props.rounded ? rounded : ''}`}
+        props.rounded ? rounded : ''
+      } ${props.class ?? ''}`}
       disabled={props.disabled}
       {...restProps}
     >
