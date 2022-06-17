@@ -56,12 +56,7 @@ export const nav_button = style({
     [`${button}.&`]: {
       color: vars.color.fg_default0,
     },
-  },
-})
-
-export const nav_button_active = style({
-  selectors: {
-    [`${button}.&`]: {
+    [`.active > ${button}.&`]: {
       color: vars.color.primary,
       background: vars.color.primary1,
     },

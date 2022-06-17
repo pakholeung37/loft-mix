@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css'
-import { vars } from './style/index.css'
+import { vars } from '../style/index.css'
 
 export const root_container = style({
   display: 'flex',

@@ -1,11 +1,14 @@
 import 'tailwindcss/lib/css/preflight.css'
 import type { Component } from 'solid-js'
-import { left_container, right_container, root_container } from './app.css'
-import { Content } from './components/Content'
-import './style/index.css'
-import { Sidebar } from './components/Sidebar'
+import {
+  left_container,
+  right_container,
+  root_container,
+} from './common_layout.css'
+import { Content } from '../components/Content'
+import { Sidebar } from '../components/Sidebar'
 
-const App: Component = () => {
+export const CommonLayout: Component = () => {
   return (
     <div class={`${root_container}`}>
       <div class={`${left_container}`}>
@@ -18,4 +21,3 @@ const App: Component = () => {
   )
 }
 
-export default App

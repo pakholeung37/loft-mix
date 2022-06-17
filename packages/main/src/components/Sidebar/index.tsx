@@ -1,5 +1,9 @@
 import { Component } from 'solid-js'
-import { AiFillMacCommand, AiOutlineBell } from 'solid-icons/ai'
+import {
+  AiFillMacCommand,
+  AiOutlineBell,
+  AiOutlineSearch,
+} from 'solid-icons/ai'
 
 import {
   bottom_group,
@@ -28,6 +32,11 @@ export const Sidebar: Component<SidebarProps> = () => {
           class={text_button}
           variant="text"
           icon={<AiOutlineBell size={20} />}
+        ></IconButton>
+        <IconButton
+          class={text_button}
+          variant="text"
+          icon={<AiOutlineSearch size={20} />}
         ></IconButton>
         <Avatar
           name="Pakho Leung"
