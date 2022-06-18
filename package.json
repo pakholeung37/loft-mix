@@ -62,7 +62,7 @@
     "@vanilla-extract/css-utils": "^0.1.2",
     "@vanilla-extract/sprinkles": "^1.4.1",
     "lodash-es": "^4.17.21",
-    "solid-app-router": "^0.4.0",
+    "solid-app-router": "^0.4.1",
     "solid-js": "^1.4.2"
   },
   "lint-staged": {

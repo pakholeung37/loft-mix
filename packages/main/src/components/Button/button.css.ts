@@ -5,7 +5,7 @@ import { vars } from '../../style/index.css'
 export const xs = style({
   height: vars.space[6],
   minWidth: vars.space[6],
-  fontSize: vars.space[3],
+  fontSize: vars.fontSizes.xs,
   paddingInlineStart: vars.space[2],
   paddingInlineEnd: vars.space[2],
 })
@@ -13,7 +13,7 @@ export const xs = style({
 export const sm = style({
   height: vars.space[8],
   minWidth: vars.space[8],
-  fontSize: vars.space[3.5],
+  fontSize: vars.fontSizes.sm,
   paddingInlineStart: vars.space[3],
   paddingInlineEnd: vars.space[3],
 })
@@ -21,7 +21,7 @@ export const sm = style({
 export const md = style({
   height: vars.space[10],
   minWidth: vars.space[10],
-  fontSize: vars.space[4],
+  fontSize: vars.fontSizes.md,
   paddingInlineStart: vars.space[4],
   paddingInlineEnd: vars.space[4],
 })
@@ -29,7 +29,7 @@ export const md = style({
 export const lg = style({
   height: vars.space[12],
   minWidth: vars.space[12],
-  fontSize: vars.space[4.5],
+  fontSize: vars.fontSizes.lg,
   paddingInlineStart: vars.space[5],
   paddingInlineEnd: vars.space[5],
 })

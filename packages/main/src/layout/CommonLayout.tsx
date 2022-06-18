@@ -20,4 +20,3 @@ export const CommonLayout: Component = () => {
     </div>
   )
 }
-
