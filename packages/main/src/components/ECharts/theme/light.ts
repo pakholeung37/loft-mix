@@ -148,7 +148,7 @@ export const light = {
   },
   categoryAxis: {
     axisLine: {
-      show: true,
+      show: false,
       lineStyle: {
         color: '#e4e4e4',
       },
@@ -178,10 +178,7 @@ export const light = {
   },
   valueAxis: {
     axisLine: {
-      show: true,
-      lineStyle: {
-        color: '#e4e4e4',
-      },
+      show: false,
     },
     axisTick: {
       show: false,

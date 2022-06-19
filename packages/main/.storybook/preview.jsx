@@ -4,7 +4,12 @@ import '../src/style/index.css'
 export const decorators = [
   Story =>
     createRoot(() => {
-      return <Story />
+      return (
+        <div style={{ height: '100%', width: '100%' }}>
+          {' '}
+          <Story />
+        </div>
+      )
     }),
 ]
 

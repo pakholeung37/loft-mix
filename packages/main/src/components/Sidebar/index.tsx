@@ -31,11 +31,13 @@ export const Sidebar: Component<SidebarProps> = () => {
         <IconButton
           class={text_button}
           variant="text"
+          size="sm"
           icon={<AiOutlineBell size={20} />}
         ></IconButton>
         <IconButton
           class={text_button}
           variant="text"
+          size="sm"
           icon={<AiOutlineSearch size={20} />}
         ></IconButton>
         <Avatar

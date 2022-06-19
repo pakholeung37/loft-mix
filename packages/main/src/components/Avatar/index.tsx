@@ -24,7 +24,7 @@ export type AvatarProps = {
 const sizeMap = { sm, md, lg, xl }
 
 const defaultProps: Required<Pick<AvatarProps, 'size'>> = {
-  size: 'sm',
+  size: 'md',
 }
 export const Avatar: Component<AvatarProps> = oriProps => {
   const props = mergeProps(defaultProps, oriProps)

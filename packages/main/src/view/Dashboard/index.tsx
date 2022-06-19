@@ -8,6 +8,8 @@ import { SimpleChartCard } from './components/SimpleChartCard'
 import { SimpleGaugeChart } from './components/SimpleGaugeChart'
 import { SimpleLineChart } from './components/SimpleLineChart'
 import { card_container, content_layout } from './dashboard.css'
+import { LineChartCard } from './components/LineChartCard'
+import { TableCard } from './components/TableCard'
 
 export const Dashboard: VoidComponent = () => {
   return (
@@ -29,6 +31,9 @@ export const Dashboard: VoidComponent = () => {
             >
               <Match when={card.key === 0}>
                 <HelloCard />
+              </Match>
+              <Match when={card.key === 1}>
+                <LineChartCard title="Sales Report" />
               </Match>
               <Match when={card.key === 2}>
                 <SimpleChartCard
@@ -95,6 +100,9 @@ export const Dashboard: VoidComponent = () => {
               </Match>
               <Match when={card.key === 6}>
                 <RatingCard title={'Popular Products'} />
+              </Match>
+              <Match when={card.key === 7}>
+                <TableCard title={'Customer Traffic Detail'} />
               </Match>
             </Switch>
           </div>

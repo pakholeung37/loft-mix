@@ -28,7 +28,7 @@ import {
   loading_icon,
 } from './button.css'
 
-export type ButtonProps = JSX.ButtonHTMLAttributes<HTMLButtonElement> & {
+export type ButtonProps = JSX.IntrinsicElements['button'] & {
   children?: JSX.Element
   variant?: 'neutral' | 'primary' | 'outline' | 'ghost' | 'text'
   size?: 'xs' | 'sm' | 'md' | 'lg'
@@ -56,7 +56,7 @@ const sizeMap = {
 }
 
 const defaultProps: Required<Pick<ButtonProps, 'size' | 'variant'>> = {
-  size: 'sm',
+  size: 'md',
   variant: 'neutral',
 }
 

@@ -111,6 +111,7 @@ importers:
 
   packages/main:
     specifiers:
+      '@tanstack/solid-table': 8.0.0-beta.9
       '@vanilla-extract/css': '*'
       '@vanilla-extract/css-utils': '*'
       '@vanilla-extract/sprinkles': '*'
@@ -122,6 +123,7 @@ importers:
       solid-js: '*'
       tailwindcss: '*'
     dependencies:
+      '@tanstack/solid-table': 8.0.0-beta.9_solid-js@1.4.4
       '@vanilla-extract/css': 1.7.2
       '@vanilla-extract/css-utils': 0.1.2
       '@vanilla-extract/sprinkles': 1.4.1_@vanilla-extract+css@1.7.2
@@ -3335,6 +3337,21 @@ packages:
       regenerator-runtime: 0.13.9
       resolve-from: 5.0.0
     dev: true
+
+  /@tanstack/solid-table/8.0.0-beta.9_solid-js@1.4.4:
+    resolution: {integrity: sha512-kefg2lOFO4UCya2Vi7J9brzLe2DrvZUsAGLLSQhGGpL4haSSeqVD9HFVVeh/IaNmA904wm4Fic/qFvnVraxrrw==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      solid-js: ^1.3.13
+    dependencies:
+      '@tanstack/table-core': 8.0.0-beta.9
+      solid-js: 1.4.4
+    dev: false
+
+  /@tanstack/table-core/8.0.0-beta.9:
+    resolution: {integrity: sha512-ymHz2mMVTBQ1eXdUQiGH5IGvPuJQY0b0yQwzfCvGUEqPfR4mOq3YUJGo61PqsjTevIWK6ti9aabA0qJeRX/Qiw==}
+    engines: {node: '>=12'}
+    dev: false
 
   /@trysound/sax/0.2.0:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
