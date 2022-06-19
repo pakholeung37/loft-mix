@@ -1,4 +1,4 @@
-import { VoidComponent, mergeProps, splitProps } from 'solid-js'
+import { VoidComponent, splitProps } from 'solid-js'
 import { IconButton, IconButtonProps } from '../Button'
 import { nav_button } from './sidebar.css'
 
@@ -7,14 +7,10 @@ export type NavButtonProps = IconButtonProps & {
 }
 
 export const NavButton: VoidComponent<NavButtonProps> = oriProps => {
-  const [props, restProps] = splitProps(oriProps, [
-    'class',
-  ])
+  const [props, restProps] = splitProps(oriProps, ['class'])
   return (
     <IconButton
-      class={`${nav_button} ${
-        props.class ?? ''
-      }`}
+      class={`${nav_button} ${props.class ?? ''}`}
       variant="text"
       size="md"
       {...restProps}

@@ -1,3 +1,4 @@
+import { createSignal } from 'solid-js'
 import { EChart } from '../index'
 
 export default {
@@ -31,7 +32,7 @@ export const Basic = () => {
   )
 }
 
-export const TrantorTheme = () => {
+export const LightTheme = () => {
   return (
     <div>
       <EChart
@@ -98,8 +99,9 @@ export const TrantorTheme = () => {
             },
           ],
         }}
-        theme="trantor"
-        autoResize
+        width={800}
+        height={400}
+        theme="light"
       ></EChart>
       <EChart
         option={{
@@ -132,7 +134,7 @@ export const TrantorTheme = () => {
         }}
         width={800}
         height={400}
-        theme="trantor"
+        theme="light"
         autoResize
       ></EChart>
       <EChart
@@ -195,7 +197,7 @@ export const TrantorTheme = () => {
         }}
         width={800}
         height={400}
-        theme="trantor"
+        theme="light"
         autoResize
       ></EChart>
       <EChart
@@ -252,7 +254,7 @@ export const TrantorTheme = () => {
         }}
         width={800}
         height={400}
-        theme="trantor"
+        theme="light"
         autoResize
       ></EChart>
       <EChart
@@ -291,7 +293,7 @@ export const TrantorTheme = () => {
         }}
         width={800}
         height={400}
-        theme="trantor"
+        theme="light"
         autoResize
       ></EChart>
       <EChart
@@ -384,8 +386,68 @@ export const TrantorTheme = () => {
         }}
         width={800}
         height={400}
-        theme="trantor"
+        theme="light"
         autoResize
+      ></EChart>
+    </div>
+  )
+}
+
+export const AutoResize = () => {
+  return (
+    <div style={{ height: '100vh', width: '100vw' }}>
+      <EChart
+        option={{
+          title: {
+            text: 'ECharts 入门示例',
+          },
+          tooltip: {},
+          xAxis: {
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+          },
+          yAxis: {},
+          series: [
+            {
+              name: '销量',
+              type: 'bar',
+              data: [5, 20, 36, 10, 10, 20],
+            },
+          ],
+        }}
+        autoResize
+      ></EChart>
+    </div>
+  )
+}
+
+export const ChangeWidth = () => {
+  const [width, setWidth] = createSignal(800)
+  return (
+    <div style={{ height: '100vh', width: '100vw' }}>
+      <div>
+        width:{' '}
+        <input onChange={el => setWidth(+el.currentTarget.value)}></input>
+        <span>{width()}</span>
+      </div>
+      <EChart
+        option={{
+          title: {
+            text: 'ECharts 入门示例',
+          },
+          tooltip: {},
+          xAxis: {
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+          },
+          yAxis: {},
+          series: [
+            {
+              name: '销量',
+              type: 'bar',
+              data: [5, 20, 36, 10, 10, 20],
+            },
+          ],
+        }}
+        width={width()}
       ></EChart>
     </div>
   )

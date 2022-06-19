@@ -4,11 +4,7 @@ import '../src/style/index.css'
 export const decorators = [
   Story =>
     createRoot(() => {
-      return (
-        <div>
-          <Story />
-        </div>
-      )
+      return <Story />
     }),
 ]
 

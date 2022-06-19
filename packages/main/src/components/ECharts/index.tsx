@@ -1,14 +1,19 @@
 import {
   createEffect,
   createRenderEffect,
+  createSignal,
   onCleanup,
   onMount,
   Ref,
   VoidComponent,
 } from 'solid-js'
 import * as charts from 'echarts'
+import { useResizeObserver } from '../../hooks/useResizeObserver'
+import { light } from './theme/light'
 
-export type EChartsProps = {
+charts.registerTheme('light', light)
+
+export type EChartProps = {
   /**
    * 图表配置，和 ECharts 的 option 对象一致
    *
@@ -48,14 +53,17 @@ export type EChartsProps = {
 }
 export type EChartRef = { getInstance: () => EChartInstance | undefined }
 export type EChartInstance = echarts.ECharts
-export const EChart: VoidComponent<EChartsProps> = props => {
+
+export const EChart: VoidComponent<EChartProps> = props => {
   let domRef: HTMLDivElement | undefined
-  let chartInstance: charts.ECharts | undefined
-  // const {
-  //   ref: sentryRef,
-  //   width: containerWidth,
-  //   height: containerHeight,
-  // } = useResizeObserver()
+  const [chartInstance, setChartInstance] = createSignal<
+    charts.ECharts | undefined
+  >()
+  const {
+    ref: containerRef,
+    width: containerWidth,
+    height: containerHeight,
+  } = useResizeObserver<HTMLDivElement>()
 
   // useImperativeHandle(ref, () => ({
   //   getInstance: () => chartInstanceRef.current,
@@ -63,43 +71,42 @@ export const EChart: VoidComponent<EChartsProps> = props => {
 
   onMount(() => {
     if (domRef) {
-      chartInstance = charts.init(domRef, props.theme, {
-        ...props.opts,
-        width: props.width ?? 600,
-        height: props.height ?? 400,
-      })
+      setChartInstance(
+        charts.init(domRef, props.theme, {
+          renderer: 'svg',
+          ...props.opts,
+        }),
+      )
     }
   })
 
   onCleanup(() => {
-    chartInstance?.dispose()
-    chartInstance = undefined
+    chartInstance()?.dispose()
+    setChartInstance(undefined)
   })
 
   createEffect(() => {
-    if (chartInstance) {
-      chartInstance.setOption(props.option)
-    }
+    chartInstance()?.setOption(props.option)
   })
 
   // resize upon width/height change
   createRenderEffect(() => {
-    if (chartInstance) {
-      chartInstance.resize({
-        width: props.width ?? 600,
-        height: props.height ?? 400,
-      })
-    }
+    chartInstance()?.resize({
+      width: props.autoResize ? containerWidth() : props.width,
+      height: props.autoResize ? containerHeight() : props.height,
+    })
   })
 
   return (
-    <div
-      ref={domRef}
-      style={{
-        width: `${props.width}px` ?? '100%',
-        height: `${props.height}px` ?? '100%',
-      }}
-    ></div>
+    <div ref={containerRef} style={{ height: '100%', width: '100%' }}>
+      <div
+        ref={domRef}
+        style={{
+          width: `${props.width}px` ?? '100%',
+          height: `${props.height}px` ?? '100%',
+        }}
+      ></div>
+    </div>
     // <div ref={sentryRef} style={{ width: '100%', height: '100%' }}>
     // </div>
   )

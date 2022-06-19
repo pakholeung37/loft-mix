@@ -1,9 +1,12 @@
 import { Component, For, Match, Switch, VoidComponent } from 'solid-js'
-import { Dynamic } from 'solid-js/web'
+import { vars } from '../../style/index.css'
 import { Key } from '../../types'
 import { CardWrapper } from './components/CardWrapper'
 import { HelloCard } from './components/HelloCard'
+import { RatingCard } from './components/RatingCard'
 import { SimpleChartCard } from './components/SimpleChartCard'
+import { SimpleGaugeChart } from './components/SimpleGaugeChart'
+import { SimpleLineChart } from './components/SimpleLineChart'
 import { card_container, content_layout } from './dashboard.css'
 
 export const Dashboard: VoidComponent = () => {
@@ -24,8 +27,74 @@ export const Dashboard: VoidComponent = () => {
                 </CardWrapper>
               }
             >
-              <Match when={card.component}>
-                <Dynamic component={card.component!} />
+              <Match when={card.key === 0}>
+                <HelloCard />
+              </Match>
+              <Match when={card.key === 2}>
+                <SimpleChartCard
+                  title="Net Income"
+                  main="$21.779"
+                  footer={
+                    <span style={{ color: vars.color.green5 }}>+2,519</span>
+                  }
+                  chart={
+                    <SimpleLineChart
+                      data={[5, 20, 36, 24, 30, 20]}
+                      color={vars.color.green5}
+                    ></SimpleLineChart>
+                  }
+                />
+              </Match>
+              <Match when={card.key === 3}>
+                <SimpleChartCard
+                  title="Total Revenue"
+                  main="$35,514"
+                  footer={
+                    <span style={{ color: vars.color.green5 }}>+$5,125</span>
+                  }
+                  chart={
+                    <SimpleLineChart
+                      data={[5, 20, 40, 24, 32, 26, 24, 26, 36, 42]}
+                      color={vars.color.green5}
+                    ></SimpleLineChart>
+                  }
+                />
+              </Match>
+              <Match when={card.key === 4}>
+                <SimpleChartCard
+                  title="Total Purchasement"
+                  main="$14,714"
+                  footer={
+                    <span style={{ color: vars.color.red }}>-$1,520</span>
+                  }
+                  chart={
+                    <SimpleLineChart
+                      data={[20, 25, 22, 15, 10, 20, 30, 20, 10, 5, 7, 3]}
+                      color={vars.color.red}
+                    ></SimpleLineChart>
+                  }
+                />
+              </Match>
+              <Match when={card.key === 5}>
+                <SimpleChartCard
+                  layout="reverse"
+                  title="Income Target"
+                  main="$13,735"
+                  footer={
+                    <span style={{ color: vars.color.fg_default1 }}>
+                      /$15,000
+                    </span>
+                  }
+                  chart={
+                    <SimpleGaugeChart
+                      data={46}
+                      color={vars.color.red}
+                    ></SimpleGaugeChart>
+                  }
+                />
+              </Match>
+              <Match when={card.key === 6}>
+                <RatingCard title={'Popular Products'} />
               </Match>
             </Switch>
           </div>
@@ -44,8 +113,8 @@ type CardMeta = {
 }
 const cards: CardMeta[] = [
   {
-    key: 'hello',
-    component: HelloCard,
+    key: 0,
+    component: null,
     position: [0, 0],
     width: 6,
     height: 2,
@@ -59,7 +128,7 @@ const cards: CardMeta[] = [
   },
   {
     key: 2,
-    component: SimpleChartCard,
+    component: null,
     position: [4, 2],
     width: 2,
     height: 4,

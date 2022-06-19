@@ -5,10 +5,15 @@ export const container = style({
   display: 'flex',
   flex: '1',
   height: '100%',
+  gap: vars.space[4],
 })
 
-export const left_container = style({
-  flex: '1',
+export const flex_reverse = style({
+  flexDirection: 'row-reverse',
+})
+
+export const text_container = style({
+  flexShrink: 0,
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'left',
@@ -26,11 +31,10 @@ export const text_2 = style({
 })
 export const text_3 = style({
   fontSize: vars.fontSizes.xs,
-  color: vars.color.green5,
 })
 
 export const chart_container = style({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  width: '100%',
+  height: '100%',
+  overflow: 'hidden',
 })
