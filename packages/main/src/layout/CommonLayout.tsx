@@ -1,4 +1,3 @@
-import 'tailwindcss/lib/css/preflight.css'
 import type { Component } from 'solid-js'
 import {
   left_container,

@@ -190,3 +190,5 @@ const getCardGridArea = (card: CardMeta) => {
   const [width, height] = [card.width, card.height]
   return `${y + 1} / ${x + 1} / ${y + height + 1} / ${x + width + 1}`
 }
+
+export default Dashboard

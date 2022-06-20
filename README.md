@@ -1,6 +1,8 @@
 # LoftMix
 
-experimental monorepo built with Solid-js with all the best practices.
+experimental admin like app built with Solid-js with all the best practices.
+
+This POC should prove solidjs has enough performances, satisfaction, DX to build a normal admin app.
 
 ## Best practices
 

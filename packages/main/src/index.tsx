@@ -1,13 +1,16 @@
 /* @refresh reload */
 import { Route, Router, Routes } from 'solid-app-router'
+import { lazy } from 'solid-js'
 import { render } from 'solid-js/web'
+import 'tailwindcss/lib/css/preflight.css'
 import { CommonLayout } from './layout/CommonLayout'
-import { App } from './view/App'
-import { Chat } from './view/Chat'
-import { Dashboard } from './view/Dashboard'
-import { NotFound } from './view/NotFound'
-import { People } from './view/People'
-import { Todo } from './view/Todo'
+
+const Dashboard = lazy(() => import('./view/Dashboard'))
+const App = lazy(() => import('./view/App'))
+const Todo = lazy(() => import('./view/Todo'))
+const Chat = lazy(() => import('./view/Chat'))
+const People = lazy(() => import('./view/People'))
+const NotFound = lazy(() => import('./view/NotFound'))
 
 render(
   () => (

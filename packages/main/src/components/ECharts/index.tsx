@@ -7,11 +7,24 @@ import {
   Ref,
   VoidComponent,
 } from 'solid-js'
-import * as charts from 'echarts'
+import * as echarts from 'echarts/core'
+import { BarChart, LineChart, GaugeChart } from 'echarts/charts'
+import { GridComponent, LegendComponent } from 'echarts/components'
+import { SVGRenderer } from 'echarts/renderers'
+import type { EChartsOption } from 'echarts'
 import { useResizeObserver } from '../../hooks/useResizeObserver'
 import { light } from './theme/light'
+// 注册必须的组件
 
-charts.registerTheme('light', light)
+echarts.use([
+  SVGRenderer,
+  BarChart,
+  LineChart,
+  GaugeChart,
+  GridComponent,
+  LegendComponent,
+])
+echarts.registerTheme('light', light)
 
 export type EChartProps = {
   /**
@@ -19,19 +32,19 @@ export type EChartProps = {
    *
    * 具体配置项参考 https://echarts.apache.org/zh/option.html#title
    */
-  option: echarts.EChartsOption
+  option: EChartsOption
   /**
    * 图表配置，和 ECharts 的 init 的 opts 对象一致
    *
    * 具体配置项参考 https://echarts.apache.org/zh/api.html#echarts.init
    */
-  opts?: Parameters<typeof charts.init>[2]
+  opts?: Parameters<typeof echarts.init>[2]
   /**
    * 图表配置，和 ECharts 的 theme 对象一致，如要使用和工作台一致的主题，使用 'trantor'
    *
    * 具体配置项参考 https://echarts.apache.org/zh/theme.html
    */
-  theme?: Parameters<typeof charts.init>[1]
+  theme?: Parameters<typeof echarts.init>[1]
   /**
    * 图表宽度
    */
@@ -57,7 +70,7 @@ export type EChartInstance = echarts.ECharts
 export const EChart: VoidComponent<EChartProps> = props => {
   let domRef: HTMLDivElement | undefined
   const [chartInstance, setChartInstance] = createSignal<
-    charts.ECharts | undefined
+    echarts.ECharts | undefined
   >()
   const {
     ref: containerRef,
@@ -72,7 +85,7 @@ export const EChart: VoidComponent<EChartProps> = props => {
   onMount(() => {
     if (domRef) {
       setChartInstance(
-        charts.init(domRef, props.theme, {
+        echarts.init(domRef, props.theme, {
           renderer: 'svg',
           ...props.opts,
         }),
