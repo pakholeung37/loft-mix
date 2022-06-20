@@ -118,6 +118,7 @@ importers:
       '@vanilla-extract/css-utils': '*'
       '@vanilla-extract/sprinkles': '*'
       clsx: ^1.1.1
+      dayjs: ^1.11.0
       echarts: ^5.3.3
       lodash-es: '*'
       solid-app-router: '*'
@@ -130,6 +131,7 @@ importers:
       '@vanilla-extract/css-utils': 0.1.2
       '@vanilla-extract/sprinkles': 1.4.1_@vanilla-extract+css@1.7.2
       clsx: 1.1.1
+      dayjs: 1.11.3
       echarts: 5.3.3
       lodash-es: 4.17.21
       solid-app-router: 0.4.1_solid-js@1.4.4
@@ -5614,6 +5616,10 @@ packages:
     resolution: {integrity: sha512-2iy1EkLdlBzQGvbweYRFxmFath8+K7+AKB0TlhHWkNuH+TmovaMH/Wp7V7R4u7f4SnX3OgLsU9t1NI9ioDnUpg==}
     engines: {node: '>=8'}
     dev: true
+
+  /dayjs/1.11.3:
+    resolution: {integrity: sha512-xxwlswWOlGhzgQ4TKzASQkUhqERI3egRNqgV4ScR8wlANA/A9tZ7miXa44vTTKEq5l7vWoL5G57bG3zA+Kow0A==}
+    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}

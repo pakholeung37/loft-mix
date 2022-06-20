@@ -10,6 +10,7 @@ import { SimpleLineChart } from './components/SimpleLineChart'
 import { card_container, content_layout } from './dashboard.css'
 import { LineChartCard } from './components/LineChartCard'
 import { TableCard } from './components/TableCard'
+import { TaskCard } from './components/TaskCard'
 
 export const Dashboard: VoidComponent = () => {
   return (
@@ -103,6 +104,9 @@ export const Dashboard: VoidComponent = () => {
               </Match>
               <Match when={card.key === 7}>
                 <TableCard title={'Customer Traffic Detail'} />
+              </Match>
+              <Match when={card.key === 8}>
+                <TaskCard title={'Task'} />
               </Match>
             </Switch>
           </div>

@@ -1,7 +1,10 @@
 import { VoidComponent } from 'solid-js'
+import * as echarts from 'echarts/core'
+import { GaugeChart } from 'echarts/charts'
 import { EChart } from '../../../components/ECharts'
 import { vars } from '../../../style/index.css'
 
+echarts.use([GaugeChart])
 export type SimpleGaugeChartProps = {
   data: number
   color?: string

@@ -6,7 +6,6 @@ export default {
   title: 'Button',
 }
 
-export const H = () => <div>hhha</div>
 export const Basic = () => {
   return (
     <>

@@ -1,6 +1,11 @@
 import { JSXElement, VoidComponent } from 'solid-js'
+import * as echarts from 'echarts/core'
+import { LineChart } from 'echarts/charts'
+import { LegendComponent, GridComponent } from 'echarts/components'
 import { EChart } from '../../../../components/ECharts'
 import { CardWrapper } from '../CardWrapper'
+
+echarts.use([LineChart, LegendComponent, GridComponent])
 
 export type LineChartCardProps = {
   title: string | JSXElement

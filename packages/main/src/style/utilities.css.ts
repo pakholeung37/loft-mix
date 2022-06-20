@@ -14,3 +14,18 @@ export const ellipsis = style({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
 })
+
+export const ellipsis_2 = style({
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  display: '-webkit-box',
+  WebkitLineClamp: 2,
+  WebkitBoxOrient: 'vertical',
+})
+export const ellipsis_3 = style({
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+  display: '-webkit-box',
+  WebkitLineClamp: 3,
+  WebkitBoxOrient: 'vertical',
+})

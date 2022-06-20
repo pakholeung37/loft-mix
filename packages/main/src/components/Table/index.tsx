@@ -40,10 +40,11 @@ export const Table: ParentComponent<TableProps> = oriProps => {
     'size',
     'variant',
     'children',
+    'class',
   ])
   return (
     <table
-      class={`${table_base} ${variantMap[props.variant]} ${
+      class={`${props.class ?? ''} ${table_base} ${variantMap[props.variant]} ${
         sizeMap[props.size]
       }`}
       {...restProps}

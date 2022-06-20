@@ -47,30 +47,76 @@ const defaultData: Person[] = [
     status: 'Complicated',
     progress: 10,
   },
+  {
+    firstName: 'tanner',
+    lastName: 'linsley',
+    age: 24,
+    visits: 100,
+    status: 'In Relationship',
+    progress: 50,
+  },
+  {
+    firstName: 'tandy',
+    lastName: 'miller',
+    age: 40,
+    visits: 40,
+    status: 'Single',
+    progress: 80,
+  },
+  {
+    firstName: 'joe',
+    lastName: 'dirte',
+    age: 45,
+    visits: 20,
+    status: 'Complicated',
+    progress: 10,
+  },
+  {
+    firstName: 'tandy',
+    lastName: 'miller',
+    age: 40,
+    visits: 40,
+    status: 'Single',
+    progress: 80,
+  },
+  {
+    firstName: 'joe',
+    lastName: 'dirte',
+    age: 45,
+    visits: 20,
+    status: 'Complicated',
+    progress: 10,
+  },
 ]
 
 const defaultColumns = [
   table.createDataColumn('firstName', {
+    header: 'First Name',
     cell: info => info.getValue(),
     footer: props => props.column.id,
   }),
   table.createDataColumn('lastName', {
+    header: 'Last Name',
     cell: info => info.getValue(),
     footer: props => props.column.id,
   }),
   table.createDataColumn('age', {
+    header: 'Age',
     cell: info => info.getValue(),
     footer: props => props.column.id,
   }),
   table.createDataColumn('visits', {
+    header: 'Visits',
     cell: info => info.getValue(),
     footer: props => props.column.id,
   }),
   table.createDataColumn('status', {
+    header: 'Status',
     cell: info => info.getValue(),
     footer: props => props.column.id,
   }),
   table.createDataColumn('progress', {
+    header: 'Progress',
     cell: info => info.getValue(),
     footer: props => props.column.id,
   }),
@@ -88,7 +134,7 @@ export const TableCard: VoidComponent<TableCardProps> = props => {
   })
   return (
     <CardWrapper title={props.title} actions={['any']}>
-      <Table>
+      <Table size="sm" variant="striped">
         <thead>
           <For each={instance.getHeaderGroups()}>
             {headerGroup => (

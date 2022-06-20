@@ -8,22 +8,12 @@ import {
   VoidComponent,
 } from 'solid-js'
 import * as echarts from 'echarts/core'
-import { BarChart, LineChart, GaugeChart } from 'echarts/charts'
-import { GridComponent, LegendComponent } from 'echarts/components'
 import { SVGRenderer } from 'echarts/renderers'
 import type { EChartsOption } from 'echarts'
 import { useResizeObserver } from '../../hooks/useResizeObserver'
 import { light } from './theme/light'
-// 注册必须的组件
 
-echarts.use([
-  SVGRenderer,
-  BarChart,
-  LineChart,
-  GaugeChart,
-  GridComponent,
-  LegendComponent,
-])
+echarts.use([SVGRenderer])
 echarts.registerTheme('light', light)
 
 export type EChartProps = {

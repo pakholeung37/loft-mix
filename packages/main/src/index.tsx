@@ -1,6 +1,6 @@
 /* @refresh reload */
 import { Route, Router, Routes } from 'solid-app-router'
-import { lazy } from 'solid-js'
+import { lazy, Suspense } from 'solid-js'
 import { render } from 'solid-js/web'
 import 'tailwindcss/lib/css/preflight.css'
 import { CommonLayout } from './layout/CommonLayout'
@@ -18,7 +18,14 @@ render(
       <Routes>
         <Route path="/" element={<CommonLayout></CommonLayout>}>
           <Route path="/" element={null}></Route>
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route
+            path="dashboard"
+            element={
+              <Suspense fallback={<div>loading...</div>}>
+                <Dashboard />
+              </Suspense>
+            }
+          />
           <Route path="app" element={<App />} />
           <Route path="todo" element={<Todo />} />
           <Route path="chat" element={<Chat />} />
