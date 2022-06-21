@@ -1,6 +1,5 @@
 import { createSignal } from 'solid-js'
 import { EChart } from '../index'
-
 export default {
   title: 'ECharts',
 }
@@ -431,10 +430,6 @@ export const ChangeWidth = () => {
       </div>
       <EChart
         option={{
-          title: {
-            text: 'ECharts 入门示例',
-          },
-          tooltip: {},
           xAxis: {
             data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
           },
@@ -442,11 +437,12 @@ export const ChangeWidth = () => {
           series: [
             {
               name: '销量',
-              type: 'bar',
+              type: 'line',
               data: [5, 20, 36, 10, 10, 20],
             },
           ],
         }}
+        height={400}
         width={width()}
       ></EChart>
     </div>

@@ -52,7 +52,7 @@ export type EChartProps = {
    *
    * 具体实例api参考 https://echarts.apache.org/zh/api.html#echartsInstance
    */
-  ref?: Ref<EChartRef>
+  ref?: (ref: Ref<EChartRef>) => void
 }
 export type EChartRef = { getInstance: () => EChartInstance | undefined }
 export type EChartInstance = echarts.ECharts
@@ -74,18 +74,19 @@ export const EChart: VoidComponent<EChartProps> = props => {
 
   onMount(() => {
     if (domRef) {
-      setChartInstance(
-        echarts.init(domRef, props.theme, {
-          renderer: 'svg',
-          ...props.opts,
-        }),
-      )
+      const instance = echarts.init(domRef, props.theme, {
+        renderer: 'svg',
+        ...props.opts,
+      })
+      setChartInstance(instance)
+      props.ref?.({ getInstance: () => instance })
     }
   })
 
   onCleanup(() => {
     chartInstance()?.dispose()
     setChartInstance(undefined)
+    props.ref?.({ getInstance: () => undefined })
   })
 
   createEffect(() => {
@@ -94,10 +95,12 @@ export const EChart: VoidComponent<EChartProps> = props => {
 
   // resize upon width/height change
   createRenderEffect(() => {
-    chartInstance()?.resize({
-      width: props.autoResize ? containerWidth() : props.width,
-      height: props.autoResize ? containerHeight() : props.height,
-    })
+    const deps = [
+      props.autoResize ? containerWidth() : props.width,
+      props.autoResize ? containerHeight() : props.height,
+    ]
+    chartInstance()?.resize()
+    return deps
   })
 
   return (
@@ -105,12 +108,10 @@ export const EChart: VoidComponent<EChartProps> = props => {
       <div
         ref={domRef}
         style={{
-          width: `${props.width}px` ?? '100%',
-          height: `${props.height}px` ?? '100%',
+          width: props.autoResize ? '100%' : `${props.width}px`,
+          height: props.autoResize ? '100%' : `${props.height}px`,
         }}
       ></div>
     </div>
-    // <div ref={sentryRef} style={{ width: '100%', height: '100%' }}>
-    // </div>
   )
 }
