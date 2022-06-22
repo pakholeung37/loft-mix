@@ -51,23 +51,25 @@ export const nav_list = style({
 
 export const nav_item = style({})
 
-export const nav_button = style({
-  selectors: {
-    [`${button}.&`]: {
-      color: vars.color.fg_default0,
-    },
-    [`.active > ${button}.&`]: {
-      color: vars.color.primary,
-      background: vars.color.primary1,
+export const nav_button = style([
+  button,
+  {
+    color: vars.color.fg_default0,
+    selectors: {
+      [`.active > &`]: {
+        color: vars.color.primary,
+        background: vars.color.primary1,
+      },
     },
   },
-})
+])
 
-export const text_button = style({
-  selectors: {
-    [`${button}.&`]: { color: vars.color.fg_default0 },
+export const text_button = style([
+  button,
+  {
+    color: vars.color.fg_default0,
   },
-})
+])
 
 export const bottom_group = style({
   display: 'flex',

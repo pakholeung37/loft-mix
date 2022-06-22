@@ -1,5 +1,10 @@
 import { createSignal } from 'solid-js'
 import { EChart } from '../index'
+import * as echarts from 'echarts/core'
+import * as allCharts from 'echarts/charts'
+import * as allComponents from 'echarts/components'
+
+echarts.use([...Object.values(allCharts), ...Object.values(allComponents)])
 export default {
   title: 'ECharts',
 }
