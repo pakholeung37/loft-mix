@@ -1,8 +1,9 @@
+import { defineStories } from '../../../util/storybook'
 import { Table } from '../index'
 
-export default {
+export default defineStories({
   title: 'Table',
-}
+})
 
 export const Basic = () => {
   return (

@@ -1,23 +1,25 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { storiesOf } from '@storybook/html'
 import { Component } from 'solid-js'
+import { defineStories } from '../../../util/storybook'
 import { useHotkeys } from '../index'
 
-export default {
+export default defineStories({
   title: 'useHotkeys',
-}
+})
 
 const Basic: Component<{ hotkey: string }> = ({ hotkey }) => {
-  let ref: HTMLDivElement | undefined
+  let ref: HTMLInputElement | undefined
   useHotkeys(
     () => ref,
     hotkey,
     () => {
       alert(`${hotkey} pressed!`)
     },
+    true,
   )
 
-  return <div ref={ref}>Press {hotkey}</div>
+  return <input ref={ref} value={`Press ${hotkey}`}></input>
 }
 
 const Global: Component<{ hotkey: string }> = ({ hotkey }) => {
@@ -64,3 +66,22 @@ storiesOf('useHotkeys', module)
   .add('Space in sequence', (() => <Basic hotkey={'w " " d'} />) as any)
   .add('Event listener options', (() => <EventCapture />) as any)
   .add('Escape hatch', (() => <EscapeHatch />) as any)
+
+export const MultipleHotkeys = () => {
+  let ref: HTMLInputElement | undefined
+  useHotkeys(
+    () => ref,
+    'ArrowUp',
+    () => {
+      alert('ArrowUp pressed!')
+    },
+  )
+  useHotkeys(
+    () => ref,
+    'ArrowDown',
+    () => {
+      alert('ArrowDown pressed!')
+    },
+  )
+  return <input ref={ref} value={`Press ArrowUp or ArrowDown`}></input>
+}

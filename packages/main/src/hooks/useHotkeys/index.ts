@@ -1,6 +1,6 @@
 import { createEffect, createMemo, onCleanup, onMount } from 'solid-js'
 import { MaybeAccessor } from '../../types'
-import { access, isAccessor } from '../../util.ts'
+import { access, isAccessor } from '../../util'
 import arraysAreEqual from './helpers/arraysAreEqual'
 import getActiveModifierKeys from './helpers/getActiveModifierKeys'
 import getHotkeysArray from './helpers/getHotkeysArray'

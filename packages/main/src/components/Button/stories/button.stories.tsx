@@ -1,10 +1,11 @@
 import { AiFillLike } from 'solid-icons/ai'
 import { createSignal } from 'solid-js'
 import { Button, IconButton } from '..'
+import { defineStories } from '../../../util/storybook'
 
-export default {
+export default defineStories({
   title: 'Button',
-}
+})
 
 export const Basic = () => {
   return (

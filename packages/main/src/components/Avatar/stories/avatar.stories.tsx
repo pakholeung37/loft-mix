@@ -1,8 +1,10 @@
 import { Avatar } from '..'
 import { BsCheck } from 'solid-icons/bs'
-export default {
+import { defineStories } from '../../../util/storybook'
+
+export default defineStories({
   title: 'Avatar',
-}
+})
 
 export const Basic = () => (
   <>

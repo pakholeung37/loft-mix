@@ -1,6 +1,6 @@
 import { Accessor } from 'solid-js'
-import { MaybeAccessor, MaybeAccessorValue } from '../types'
 
+import { MaybeAccessor, MaybeAccessorValue } from '../types'
 export const isAccessor = <T>(value: any): value is Accessor<T> => {
   return typeof value === 'function'
 }

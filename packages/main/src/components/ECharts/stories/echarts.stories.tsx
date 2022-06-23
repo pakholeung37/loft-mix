@@ -3,11 +3,13 @@ import { EChart } from '../index'
 import * as echarts from 'echarts/core'
 import * as allCharts from 'echarts/charts'
 import * as allComponents from 'echarts/components'
+import { defineStories } from '../../../util/storybook'
 
 echarts.use([...Object.values(allCharts), ...Object.values(allComponents)])
-export default {
+
+export default defineStories({
   title: 'ECharts',
-}
+})
 
 export const Basic = () => {
   return (

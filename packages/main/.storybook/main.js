@@ -9,7 +9,7 @@ module.exports = {
   stories: ['../src/**/*.stories.tsx'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
   async viteFinal(config) {
-    config.plugins.unshift(solidPlugin({ hot: false }), vanillaExtractPlugin())
+    config.plugins.unshift(solidPlugin(), vanillaExtractPlugin())
 
     return config
   },
