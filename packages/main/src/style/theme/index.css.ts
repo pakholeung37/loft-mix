@@ -41,6 +41,22 @@ const transition = {
   },
 }
 
+const shadow = {
+  shadow: {
+    xs: null,
+    sm: null,
+    base: null,
+    md: null,
+    lg: null,
+    xl: null,
+    ['2xl']: null,
+    outline: null,
+    inner: null,
+    none: null,
+    ['dark-lg']: null,
+  },
+}
+
 const base = {
   color: colors,
   space,
@@ -132,9 +148,7 @@ const baseTheme = merge(
     },
   },
   base,
-  avatar,
-  header,
-  transition,
+  merge({}, avatar, header, transition, shadow),
 )
 /**
  * Name	Size	Pixels	Preview
@@ -253,15 +267,15 @@ export const light_theme = createGlobalTheme(
       logo_text: vars.color.white,
       border: vars.color.slate2,
       fg_default: vars.color.gray8,
-      fg_default0: vars.color.gray5,
-      fg_default1: vars.color.gray3,
-      fg_default2: vars.color.gray1,
-      fg_default3: vars.color.gray0,
+      fg_default0: vars.color.gray7,
+      fg_default1: vars.color.gray6,
+      fg_default2: vars.color.gray5,
+      fg_default3: vars.color.gray4,
       bg_default: vars.color.white,
-      bg_default0: vars.color.gray0,
-      bg_default1: vars.color.gray1,
+      bg_default0: vars.color.gray1,
+      bg_default1: vars.color.gray2,
       bg_default2: vars.color.gray3,
-      bg_default3: vars.color.gray5,
+      bg_default3: vars.color.gray4,
     },
     borderRadius: {
       xs: vars.space[0.5],
@@ -316,6 +330,19 @@ export const light_theme = createGlobalTheme(
       easing_ease_in: 'cubic-bezier(0.4, 0, 1, 1)',
       easing_ease_in_out: 'cubic-bezier(0, 0, 0.2, 1)',
       easing_ease_out: 'cubic-bezier(0.4, 0, 0.2, 1)',
+    },
+    shadow: {
+      xs: `0 0 0 1px rgba(0, 0, 0, 0.05)`,
+      sm: `0 1px 2px 0 rgba(0, 0, 0, 0.05)`,
+      base: `0 1px 3px 0 rgba(0, 0, 0, 0.1),0 1px 2px 0 rgba(0, 0, 0, 0.06)`,
+      md: `0 4px 6px -1px rgba(0, 0, 0, 0.1),0 2px 4px -1px rgba(0, 0, 0, 0.06)`,
+      lg: `0 10px 15px -3px rgba(0, 0, 0, 0.1),0 4px 6px -2px rgba(0, 0, 0, 0.05)`,
+      xl: `0 20px 25px -5px rgba(0, 0, 0, 0.1),0 10px 10px -5px rgba(0, 0, 0, 0.04)`,
+      ['2xl']: ` 0 25px 50px -12px rgba(0, 0, 0, 0.25)`,
+      outline: `0 0 0 3px rgba(66, 153, 225, 0.6)`,
+      inner: `inset 0 2px 4px 0 rgba(0,0,0,0.06)`,
+      none: `none`,
+      ['dark-lg']: `rgba(0, 0, 0, 0.1) 0px 0px 0px 1px,rgba(0, 0, 0, 0.2) 0px 5px 10px,rgba(0, 0, 0, 0.4) 0px 15px 40px`,
     },
   }),
 )

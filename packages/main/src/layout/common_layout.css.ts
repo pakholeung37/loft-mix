@@ -14,5 +14,15 @@ export const left_container = style({})
 export const right_container = style({
   flex: '1',
   overflow: 'scroll',
-  background: vars.color.bg_default1,
+  background: vars.color.bg_default0,
+})
+
+export const command_palette_container = style({
+  width: '512px',
+  position: 'fixed',
+  margin: '10vh auto',
+  top: 0,
+  left: '50%',
+  transform: 'translateX(-50%)',
+  boxShadow: vars.shadow.md,
 })

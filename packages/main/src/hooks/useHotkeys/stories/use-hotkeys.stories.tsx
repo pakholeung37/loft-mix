@@ -58,7 +58,7 @@ const EscapeHatch = () => {
 
 storiesOf('useHotkeys', module)
   .add('Basic', (() => <Basic hotkey={'ArrowUp'} />) as any)
-  .add('Global', (() => <Global hotkey={'ArrowUp'} />) as any)
+  .add('Global', (() => <Global hotkey={'Meta+k'} />) as any)
   .add('Modifier combination', (() => (
     <Global hotkey={'Meta+Shift+z'} />
   )) as any)

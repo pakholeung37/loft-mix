@@ -1,5 +1,6 @@
 
 import { render } from 'solid-js/web'
+import 'tailwindcss/lib/css/preflight.css'
 
 let disposeStory
 

@@ -6,16 +6,20 @@ import {
 } from './common_layout.css'
 import { Content } from '../components/Content'
 import { Sidebar } from '../components/Sidebar'
+import { CommandPaletteContainer } from './CommandPaletteContainer'
 
 export const CommonLayout: Component = () => {
   return (
-    <div class={`${root_container}`}>
-      <div class={`${left_container}`}>
-        <Sidebar />
+    <>
+      <div class={`${root_container}`}>
+        <div class={`${left_container}`}>
+          <Sidebar />
+        </div>
+        <div class={`${right_container}`}>
+          <Content />
+        </div>
       </div>
-      <div class={`${right_container}`}>
-        <Content />
-      </div>
-    </div>
+      <CommandPaletteContainer />
+    </>
   )
 }
