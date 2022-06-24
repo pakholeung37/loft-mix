@@ -16,9 +16,8 @@ render(
     <Router>
       <Routes>
         <Route path="/" element={<CommonLayout></CommonLayout>}>
-          <Route path="/" element={null}></Route>
           <Route
-            path="dashboard"
+            path="/"
             element={
               <Suspense fallback={<div>loading...</div>}>
                 <Dashboard />

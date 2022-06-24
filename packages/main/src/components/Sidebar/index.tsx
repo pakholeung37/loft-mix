@@ -16,9 +16,11 @@ import { Nav } from './Nav'
 import { Avatar } from '../Avatar'
 import { IconButton } from '../Button'
 
-export type SidebarProps = {}
+export type SidebarProps = {
+  onSearchClick: () => void
+}
 
-export const Sidebar: Component<SidebarProps> = () => {
+export const Sidebar: Component<SidebarProps> = props => {
   return (
     <div class={`${sidebar}`}>
       <div class={logo_container}>
@@ -39,6 +41,7 @@ export const Sidebar: Component<SidebarProps> = () => {
           variant="text"
           size="sm"
           icon={<AiOutlineSearch size={20} />}
+          onClick={props.onSearchClick}
         ></IconButton>
         <Avatar
           name="Pakho Leung"

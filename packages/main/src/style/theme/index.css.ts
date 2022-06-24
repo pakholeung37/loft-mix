@@ -1,4 +1,8 @@
-import { createGlobalTheme, createThemeContract } from '@vanilla-extract/css'
+import {
+  createGlobalTheme,
+  createThemeContract,
+  globalStyle,
+} from '@vanilla-extract/css'
 import { merge } from 'lodash-es'
 import { colors } from './colors'
 import { space } from './space'
@@ -346,3 +350,8 @@ export const light_theme = createGlobalTheme(
     },
   }),
 )
+
+globalStyle('body', {
+  color: vars.color.fg_default,
+  background: vars.color.bg_default,
+})

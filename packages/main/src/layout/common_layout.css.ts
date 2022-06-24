@@ -24,5 +24,12 @@ export const command_palette_container = style({
   top: 0,
   left: '50%',
   transform: 'translateX(-50%)',
-  boxShadow: vars.shadow.md,
+})
+
+export const command_palette_mask = style({
+  position: 'fixed',
+  top: 0,
+  height: '100vh',
+  width: '100vw',
+  background: vars.color.blackAlpha6,
 })
