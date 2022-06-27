@@ -71,6 +71,10 @@ export const CommandPalette: VoidComponent<CommandPaletteProps> = props => {
 
   let ref: HTMLInputElement | undefined
 
+  onMount(() => {
+    ref?.focus()
+  })
+
   useHotkeys(
     () => ref,
     'ArrowUp',
@@ -133,17 +137,17 @@ export const CommandPalette: VoidComponent<CommandPaletteProps> = props => {
     }
   })
 
-  onMount(() => {
-    ref?.focus()
-  })
-
   const [inputValue, setInputValue] = createSignal('')
   const handleKeyDown: JSX.EventHandlerUnion<
     HTMLInputElement,
     Event
   > = event => {
     const value = event.currentTarget.value
+    if (value === inputValue()) return
     setInputValue(value)
+
+    const _resultKeys = resultKeys()
+    setActiveKey(_resultKeys[0] ?? null)
   }
 
   createEffect(() => {
@@ -186,13 +190,15 @@ export const CommandPalette: VoidComponent<CommandPaletteProps> = props => {
         />
         {/* <div class={placeholder}>{}</div> */}
         <div class={right_container}>
-          <IconButton
-            class={close_button}
-            size="xs"
-            variant="text"
-            icon={<AiFillCloseCircle size={16} />}
-            onClick={() => setInputValue('')}
-          ></IconButton>
+          <Show when={inputValue() !== ''}>
+            <IconButton
+              class={close_button}
+              size="xs"
+              variant="text"
+              icon={<AiFillCloseCircle size={16} />}
+              onClick={() => setInputValue('')}
+            ></IconButton>
+          </Show>
         </div>
       </div>
       <div class={result_container}>

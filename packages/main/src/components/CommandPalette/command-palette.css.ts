@@ -31,7 +31,9 @@ export const input = style({
   color: vars.color.fg_default,
   background: 'transparent',
 })
-export const right_container = style({})
+export const right_container = style({
+  width: vars.space[4],
+})
 export const close_button = style([
   button,
   {
