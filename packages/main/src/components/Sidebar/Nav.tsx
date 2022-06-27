@@ -27,7 +27,7 @@ export const Nav: VoidComponent<NavProps> = () => {
         <For each={navList}>
           {navItem => (
             <li class={nav_item}>
-              <NavLink href={navItem.path}>
+              <NavLink href={navItem.path} end>
                 <NavButton
                   title={navItem.title}
                   icon={<Dynamic component={navItem.icon} size={24} />}
