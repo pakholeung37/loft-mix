@@ -1,10 +1,9 @@
 import {
   createEffect,
   createRenderEffect,
-  createSignal,
   onCleanup,
-  onMount,
   Ref,
+  untrack,
   VoidComponent,
 } from 'solid-js'
 import * as echarts from 'echarts/core'
@@ -12,9 +11,11 @@ import { SVGRenderer } from 'echarts/renderers'
 import type { EChartsOption } from 'echarts'
 import { useResizeObserver } from '../../hooks/useResizeObserver'
 import { light } from './theme/light'
+import { dark } from './theme/dark'
 
 echarts.use([SVGRenderer])
 echarts.registerTheme('light', light)
+echarts.registerTheme('dark', dark)
 
 export type EChartProps = {
   /**
@@ -59,38 +60,36 @@ export type EChartInstance = echarts.ECharts
 
 export const EChart: VoidComponent<EChartProps> = props => {
   let domRef: HTMLDivElement | undefined
-  const [chartInstance, setChartInstance] = createSignal<
-    echarts.ECharts | undefined
-  >()
+  let chartInstance: EChartInstance | undefined
   const {
     ref: containerRef,
     width: containerWidth,
     height: containerHeight,
   } = useResizeObserver<HTMLDivElement>()
 
-  // useImperativeHandle(ref, () => ({
-  //   getInstance: () => chartInstanceRef.current,
-  // }))
+  createEffect(() => {
+    const theme = props.theme
+    const opts = props.opts
 
-  onMount(() => {
+    if (chartInstance) {
+      chartInstance.dispose()
+      chartInstance = undefined
+    }
     if (domRef) {
-      const instance = echarts.init(domRef, props.theme, {
+      const instance = echarts.init(domRef, theme, {
         renderer: 'svg',
-        ...props.opts,
+        ...opts,
       })
-      setChartInstance(instance)
+      chartInstance = instance
       props.ref?.({ getInstance: () => instance })
+      untrack(() => {
+        chartInstance?.setOption(props.option)
+      })
     }
   })
 
-  onCleanup(() => {
-    chartInstance()?.dispose()
-    setChartInstance(undefined)
-    props.ref?.({ getInstance: () => undefined })
-  })
-
   createEffect(() => {
-    chartInstance()?.setOption(props.option)
+    chartInstance?.setOption(props.option)
   })
 
   // resize upon width/height change
@@ -99,8 +98,14 @@ export const EChart: VoidComponent<EChartProps> = props => {
       props.autoResize ? containerWidth() : props.width,
       props.autoResize ? containerHeight() : props.height,
     ]
-    chartInstance()?.resize()
+    chartInstance?.resize()
     return deps
+  })
+
+  onCleanup(() => {
+    chartInstance?.dispose()
+    chartInstance = undefined
+    props.ref?.({ getInstance: () => undefined })
   })
 
   return (

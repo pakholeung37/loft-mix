@@ -3,6 +3,8 @@ import * as echarts from 'echarts/core'
 import { LineChart } from 'echarts/charts'
 import { LegendComponent, GridComponent } from 'echarts/components'
 import { EChart } from '../../../components/ECharts'
+import { useTheme } from '../../../hooks/useTheme'
+import { access } from '../../../util'
 
 echarts.use([LineChart, LegendComponent, GridComponent])
 
@@ -12,6 +14,7 @@ export type SimpleLineChartProps = {
   color?: string
 }
 export const SimpleLineChart: VoidComponent<SimpleLineChartProps> = props => {
+  const { theme } = useTheme()
   return (
     <EChart
       option={{
@@ -28,6 +31,7 @@ export const SimpleLineChart: VoidComponent<SimpleLineChartProps> = props => {
         yAxis: {
           show: false,
         },
+        animation: false,
         series: [
           {
             type: 'line',
@@ -41,7 +45,7 @@ export const SimpleLineChart: VoidComponent<SimpleLineChartProps> = props => {
         ],
       }}
       autoResize
-      theme="light"
+      theme={access(theme)}
     />
   )
 }

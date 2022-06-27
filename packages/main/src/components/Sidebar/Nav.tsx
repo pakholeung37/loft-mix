@@ -14,11 +14,11 @@ import { NavButton } from './NavButton'
 export type NavProps = {}
 
 const navList = [
-  { key: 'dashboard', title: 'Dashboard', icon: AiOutlineHome },
-  { key: 'app', title: 'App', icon: AiOutlineAppstore },
-  { key: 'todo', title: 'Todo', icon: AiOutlineCheckSquare },
-  { key: 'chat', title: 'Chat', icon: AiOutlineMessage },
-  { key: 'people', title: 'People', icon: AiOutlineTeam },
+  { key: 'dashboard', title: 'Dashboard', icon: AiOutlineHome, path: '/' },
+  { key: 'app', title: 'App', icon: AiOutlineAppstore, path: '/app' },
+  { key: 'todo', title: 'Todo', icon: AiOutlineCheckSquare, path: '/todo' },
+  { key: 'chat', title: 'Chat', icon: AiOutlineMessage, path: '/chat' },
+  { key: 'people', title: 'People', icon: AiOutlineTeam, path: '/people' },
 ]
 export const Nav: VoidComponent<NavProps> = () => {
   return (
@@ -27,7 +27,7 @@ export const Nav: VoidComponent<NavProps> = () => {
         <For each={navList}>
           {navItem => (
             <li class={nav_item}>
-              <NavLink href={navItem.key}>
+              <NavLink href={navItem.path}>
                 <NavButton
                   title={navItem.title}
                   icon={<Dynamic component={navItem.icon} size={24} />}

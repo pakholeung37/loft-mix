@@ -3,6 +3,8 @@ import * as echarts from 'echarts/core'
 import { GaugeChart } from 'echarts/charts'
 import { EChart } from '../../../components/ECharts'
 import { vars } from '../../../style/index.css'
+import { useTheme } from '../../../hooks/useTheme'
+import { access } from '../../../util'
 
 echarts.use([GaugeChart])
 export type SimpleGaugeChartProps = {
@@ -10,6 +12,7 @@ export type SimpleGaugeChartProps = {
   color?: string
 }
 export const SimpleGaugeChart: VoidComponent<SimpleGaugeChartProps> = props => {
+  const { theme } = useTheme()
   return (
     <EChart
       option={{
@@ -22,6 +25,7 @@ export const SimpleGaugeChart: VoidComponent<SimpleGaugeChartProps> = props => {
             pointer: {
               show: false,
             },
+            animation: false,
             progress: {
               show: true,
               overlap: false,
@@ -62,7 +66,7 @@ export const SimpleGaugeChart: VoidComponent<SimpleGaugeChartProps> = props => {
         ],
       }}
       autoResize
-      theme="light"
+      theme={access(theme)}
     />
   )
 }

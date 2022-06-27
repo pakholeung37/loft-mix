@@ -4,6 +4,8 @@ import { LineChart } from 'echarts/charts'
 import { LegendComponent, GridComponent } from 'echarts/components'
 import { EChart } from '../../../../components/ECharts'
 import { CardWrapper } from '../CardWrapper'
+import { useTheme } from '../../../../hooks/useTheme'
+import { access } from '../../../../util'
 
 echarts.use([LineChart, LegendComponent, GridComponent])
 
@@ -11,6 +13,7 @@ export type LineChartCardProps = {
   title: string | JSXElement
 }
 export const LineChartCard: VoidComponent<LineChartCardProps> = props => {
+  const { theme } = useTheme()
   return (
     <CardWrapper title={props.title}>
       <EChart
@@ -41,6 +44,7 @@ export const LineChartCard: VoidComponent<LineChartCardProps> = props => {
               },
             },
           ],
+          animation: false,
           series: [
             {
               name: 'Revenue',
@@ -64,7 +68,7 @@ export const LineChartCard: VoidComponent<LineChartCardProps> = props => {
             },
           ],
         }}
-        theme="light"
+        theme={access(theme)}
         autoResize
       ></EChart>
     </CardWrapper>

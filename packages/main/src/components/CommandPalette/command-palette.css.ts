@@ -29,6 +29,7 @@ export const input = style({
   outline: 'none',
   fontSize: vars.fontSizes.md,
   color: vars.color.fg_default,
+  background: 'transparent',
 })
 export const right_container = style({})
 export const close_button = style([

@@ -5,8 +5,8 @@ export const root_container = style({
   display: 'flex',
   height: '100vh',
   overflow: 'hidden',
-  color: vars.color.slate8,
-  backgroundColor: vars.color.white,
+  color: vars.color.fg_default,
+  background: vars.color.bg_default,
 })
 
 export const left_container = style({})

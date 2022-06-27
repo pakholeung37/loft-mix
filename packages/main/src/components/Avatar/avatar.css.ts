@@ -16,7 +16,7 @@ export const avatar = style({
   width: '100%',
   overflow: 'hidden',
   position: 'relative',
-  color: vars.color.avatar_text,
+  color: vars.color.fg_default,
   background: vars.color.bg_default1,
 })
 

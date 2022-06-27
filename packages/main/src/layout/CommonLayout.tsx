@@ -10,6 +10,8 @@ import { Content } from '../components/Content'
 import { Sidebar } from '../components/Sidebar'
 import { CommandPalette } from '../components/CommandPalette'
 import { useHotkeys } from '../hooks/useHotkeys'
+import { dark_theme, light_theme } from '../style/index.css'
+import { ThemeProvider } from '../hooks/useTheme'
 
 export const CommonLayout: Component = () => {
   const [visible, setVisible] = createSignal(false)
@@ -22,29 +24,38 @@ export const CommonLayout: Component = () => {
     setVisible(false)
   })
 
+  const [theme, setTheme] = createSignal<'dark' | 'light'>('light')
   return (
-    <>
-      <div class={`${root_container}`}>
+    <ThemeProvider value={{ theme }}>
+      <div
+        class={`${root_container} ${
+          theme() === 'light' ? light_theme : dark_theme
+        }`}
+      >
         <div class={`${left_container}`}>
           <Sidebar
             onSearchClick={() => {
               setVisible(true)
             }}
+            onThemeClick={() => {
+              setTheme(theme => (theme === 'light' ? 'dark' : 'light'))
+            }}
+            theme={theme()}
           />
         </div>
         <div class={`${right_container}`}>
           <Content />
         </div>
+        <Show when={visible()}>
+          <div
+            class={command_palette_mask}
+            onClick={() => setVisible(false)}
+          ></div>
+          <div class={command_palette_container}>
+            <CommandPalette onAction={() => setVisible(false)} />
+          </div>
+        </Show>
       </div>
-      <Show when={visible()}>
-        <div
-          class={command_palette_mask}
-          onClick={() => setVisible(false)}
-        ></div>
-        <div class={command_palette_container}>
-          <CommandPalette onAction={() => setVisible(false)} />
-        </div>
-      </Show>
-    </>
+    </ThemeProvider>
   )
 }
