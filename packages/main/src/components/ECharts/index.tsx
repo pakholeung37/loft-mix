@@ -3,7 +3,6 @@ import {
   createRenderEffect,
   onCleanup,
   Ref,
-  untrack,
   VoidComponent,
 } from 'solid-js'
 import * as echarts from 'echarts/core'
@@ -82,9 +81,6 @@ export const EChart: VoidComponent<EChartProps> = props => {
       })
       chartInstance = instance
       props.ref?.({ getInstance: () => instance })
-      untrack(() => {
-        chartInstance?.setOption(props.option)
-      })
     }
   })
 
@@ -93,11 +89,17 @@ export const EChart: VoidComponent<EChartProps> = props => {
   })
 
   // resize upon width/height change
+  let activate = false
   createRenderEffect(() => {
     const deps = [
       props.autoResize ? containerWidth() : props.width,
       props.autoResize ? containerHeight() : props.height,
     ]
+    if (!activate) {
+      activate = true
+      return
+    }
+    if (!deps[0] || !deps[1]) return
     chartInstance?.resize()
     return deps
   })
