@@ -3,7 +3,7 @@ import * as echarts from 'echarts/core'
 import { GaugeChart } from 'echarts/charts'
 import { EChart } from '../../../components/ECharts'
 import { vars } from '../../../style/index.css'
-import { useTheme } from '../../../hooks/useTheme'
+import { useTheme } from '../../../context/theme'
 import { access } from '../../../util'
 
 echarts.use([GaugeChart])

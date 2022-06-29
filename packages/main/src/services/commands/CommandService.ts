@@ -1,3 +1,4 @@
+import { Component } from 'solid-js'
 import { IDisposable } from '../../types'
 
 export interface ICommandHandler<T = any> {
@@ -5,15 +6,18 @@ export interface ICommandHandler<T = any> {
 }
 export interface ICommand {
   id: string
+  title: string
   handler: ICommandHandler
   description?: string
+  icon?: Component
+  group?: string
 }
 
 export type ICommandsMap = Map<string, ICommand>
 
 export interface ICommandRegistry {
   // onDidRegisterCommand: Event<string>
-  registerCommand(id: string, command: ICommandHandler): IDisposable
+  registerCommand(command: ICommand): IDisposable
   registerCommandAlias(oldId: string, newId: string): IDisposable
   getCommand(id: string): ICommand | undefined
   getCommands(): ICommandsMap
@@ -33,17 +37,18 @@ export interface ICommandService {
   ): Promise<T | undefined>
 }
 
-class CommandRegistryClass implements ICommandRegistry {
+class CommandRegistry implements ICommandRegistry {
   private readonly _commands = new Map<string, ICommand>()
   // onDidRegisterCommand() {
   //   throw new Error('Method not implemented.')
   // }
-  registerCommand(id: string, command: ICommandHandler): IDisposable {
+  registerCommand(command: ICommand): IDisposable {
+    const id = command.id
     const _command = this.getCommand(id)
     if (_command) {
       throw new Error(`Command '${id}' already exists.`)
     }
-    this._commands.set(id, { id, handler: command })
+    this._commands.set(id, command)
     return {
       dispose: () => {
         this._commands.delete(id)
@@ -60,8 +65,8 @@ class CommandRegistryClass implements ICommandRegistry {
       throw new Error(`Command '${newId}' already exists.`)
     }
     this._commands.set(newId, {
+      ...oldCommand,
       id: newId,
-      handler: oldCommand.handler,
     })
     return {
       dispose: () => {
@@ -77,11 +82,11 @@ class CommandRegistryClass implements ICommandRegistry {
   }
 }
 
-const CommandRegistry = new CommandRegistryClass()
+export const commandRegistry = new CommandRegistry()
 
 export class CommandService implements ICommandService {
   executeCommand<T = any>(commandId: string, ...args: any[]): Promise<T> {
-    const command = CommandRegistry.getCommand(commandId)
+    const command = commandRegistry.getCommand(commandId)
     if (!command) {
       return Promise.reject(new Error(`command '${commandId}' not found`))
     }

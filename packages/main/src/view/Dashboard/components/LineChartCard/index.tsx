@@ -4,7 +4,7 @@ import { LineChart } from 'echarts/charts'
 import { LegendComponent, GridComponent } from 'echarts/components'
 import { EChart } from '../../../../components/ECharts'
 import { CardWrapper } from '../CardWrapper'
-import { useTheme } from '../../../../hooks/useTheme'
+import { useTheme } from '../../../../context/theme'
 import { access } from '../../../../util'
 
 echarts.use([LineChart, LegendComponent, GridComponent])

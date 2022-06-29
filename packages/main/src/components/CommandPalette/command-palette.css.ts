@@ -33,6 +33,7 @@ export const input = style({
 })
 export const right_container = style({
   width: vars.space[4],
+  display: 'flex',
 })
 export const close_button = style([
   button,
@@ -110,7 +111,7 @@ export const action_description = style({
   color: vars.color.fg_default3,
   fontSize: vars.fontSizes.xs,
   selectors: {
-    [`.${result_item}:hover &, ${result_item}.${result_active} &`]: {
+    [`${result_item}.${result_active} &`]: {
       visibility: 'visible',
     },
   },
