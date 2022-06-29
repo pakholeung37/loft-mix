@@ -10,3 +10,15 @@ export type MaybeAccessorValue<T extends MaybeAccessor<any>> =
 export type DeepNull<T extends object> = {
   [K in keyof T]: T[K] extends object ? DeepNull<T[K]> : null
 }
+
+export interface IDisposable {
+  dispose: () => void
+}
+
+export interface Event<T> {
+  (
+    listener: (e: T) => any,
+    thisArgs?: any,
+    disposables?: IDisposable[],
+  ): IDisposable
+}
