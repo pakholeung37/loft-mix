@@ -25,8 +25,6 @@ This POC should prove solidjs has enough performances, satisfaction, DX to build
 - [ ] people
 - [ ] app - table like
 
-## Best practices
-
 ### styles
 - [x] dark mode
 
