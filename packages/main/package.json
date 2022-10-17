@@ -12,7 +12,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@solid-primitives/context": "^0.1.0",
+    "@solid-primitives/context": "^0.1.1",
     "@tanstack/solid-table": "8.0.0-beta.9",
     "@vanilla-extract/css": "*",
     "@vanilla-extract/css-utils": "*",
