@@ -6,7 +6,7 @@ export const sidebar = style({
   width: vars.space[12],
   background: vars.color.bg_default,
   height: '100%',
-  position: 'relative',
+  position: 'sticky',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
@@ -21,7 +21,9 @@ export const logo_container = style({
   display: 'flex',
   alignItems: 'center',
   height: vars.space[12],
+  marginTop: vars.space[2],
   marginBottom: vars.space[4],
+  flex: 0,
 })
 
 export const logo = style({

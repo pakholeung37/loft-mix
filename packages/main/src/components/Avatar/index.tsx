@@ -11,7 +11,7 @@ import {
   status_container,
   avatar_container,
 } from './avatar.css'
-import { VscAccount } from 'solid-icons/vsc'
+import { VsAccount } from 'solid-icons/vs'
 import { vars } from '../../style/index.css'
 
 export type AvatarProps = {
@@ -32,7 +32,7 @@ export const Avatar: Component<AvatarProps> = oriProps => {
   return (
     <div class={`${avatar_container} ${sizeMap[props.size]}`}>
       <div class={avatar} title={props.name} style={props.style}>
-        <Switch fallback={<VscAccount class={no_avatar} />}>
+        <Switch fallback={<VsAccount class={no_avatar} />}>
           <Match when={props.src}>
             <img class={avatar_image} src={props.src}></img>
           </Match>

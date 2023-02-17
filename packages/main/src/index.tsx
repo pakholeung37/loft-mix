@@ -1,10 +1,8 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import 'solid-devtools'
 import { Route, Router, Routes } from 'solid-app-router'
 import { lazy, Suspense } from 'solid-js'
 import { render } from 'solid-js/web'
-import 'tailwindcss/lib/css/preflight.css'
 import { CommonLayout } from './layout/CommonLayout'
+import 'tailwindcss/lib/css/preflight.css'
 
 const Dashboard = lazy(() => import('./view/Dashboard'))
 const App = lazy(() => import('./view/App'))

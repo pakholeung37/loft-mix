@@ -9,7 +9,7 @@ import {
   Switch,
   VoidComponent,
 } from 'solid-js'
-import { BiLoaderAlt } from 'solid-icons/bi'
+import { BiRegularLoader } from 'solid-icons/bi'
 import { rounded } from '../../style/utilities.css'
 import {
   button,
@@ -84,7 +84,7 @@ export const Button: Component<ButtonProps> = oriProps => {
       <Switch>
         <Match when={props.loading}>
           <span class={`${left_icon} ${loading_icon}`}>
-            <BiLoaderAlt />
+            <BiRegularLoader />
           </span>
         </Match>
         <Match when={props.leftIcon}>

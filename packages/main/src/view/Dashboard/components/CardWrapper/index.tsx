@@ -1,4 +1,4 @@
-import { VscEllipsis } from 'solid-icons/vsc'
+import { VsEllipsis } from 'solid-icons/vs'
 import { Component, JSXElement, mergeProps, Show } from 'solid-js'
 import { IconButton } from '../../../../components/Button'
 import { ellipsis } from '../../../../style/utilities.css'
@@ -42,7 +42,7 @@ export const CardWrapper: Component<CardWrapperProps> = oriProps => {
                 variant="text"
                 size="xs"
                 class={more_button}
-                icon={<VscEllipsis />}
+                icon={<VsEllipsis />}
               ></IconButton>
             </div>
           </Show>

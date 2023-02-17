@@ -9,11 +9,11 @@
     "esModuleInterop": true,
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
-    "types": ["vite/client"],
+    "types": ["solid-js", "vite/client", "node"],
     "noEmit": true,
     "isolatedModules": true,
     "skipLibCheck": true
   },
   "exclude": ["**/node_modules/**", "**/dist/**"],
-  "include": ["packages", "scripts", "tooling"],
+  "include": ["packages", "scripts", "tooling"]
 }
